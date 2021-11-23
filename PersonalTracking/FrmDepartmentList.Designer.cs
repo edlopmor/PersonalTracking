@@ -114,6 +114,7 @@ namespace PersonalTracking
             this.Name = "FrmDepartmentList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmDepartmentList";
+            this.Load += new System.EventHandler(this.FrmDepartmentList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

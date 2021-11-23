@@ -41,32 +41,33 @@ namespace PersonalTracking
             this.lblDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDepartment.Location = new System.Drawing.Point(12, 35);
             this.lblDepartment.Name = "lblDepartment";
-            this.lblDepartment.Size = new System.Drawing.Size(113, 25);
+            this.lblDepartment.Size = new System.Drawing.Size(155, 31);
             this.lblDepartment.TabIndex = 0;
-            this.lblDepartment.Text = "Department";
-            this.lblDepartment.Click += new System.EventHandler(this.lblDepartment_Click);
+            this.lblDepartment.Text = "Departmento";
             // 
             // txtBoxDepartment
             // 
             this.txtBoxDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxDepartment.Location = new System.Drawing.Point(131, 35);
+            this.txtBoxDepartment.Location = new System.Drawing.Point(170, 35);
             this.txtBoxDepartment.Name = "txtBoxDepartment";
-            this.txtBoxDepartment.Size = new System.Drawing.Size(338, 30);
+            this.txtBoxDepartment.Size = new System.Drawing.Size(299, 30);
             this.txtBoxDepartment.TabIndex = 1;
             this.txtBoxDepartment.TextChanged += new System.EventHandler(this.txtBoxDepartment_TextChanged);
             // 
             // btnCrear
             // 
+            this.btnCrear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCrear.Location = new System.Drawing.Point(17, 102);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(203, 49);
             this.btnCrear.TabIndex = 2;
             this.btnCrear.Text = "Crear";
             this.btnCrear.UseVisualStyleBackColor = true;
-            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
+            this.btnCrear.Click += new System.EventHandler(this.BtnCrear_Click);
             // 
             // btnExit
             // 
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.Location = new System.Drawing.Point(266, 102);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(203, 49);
@@ -86,7 +87,7 @@ namespace PersonalTracking
             this.Controls.Add(this.lblDepartment);
             this.Name = "FrmDepartment";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmDepartment";
+            this.Text = "Crear departamento";
             this.ResumeLayout(false);
             this.PerformLayout();
 

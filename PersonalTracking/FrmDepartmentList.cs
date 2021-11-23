@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BLL;
+using DAL;
 
 namespace PersonalTracking
 {
@@ -28,6 +30,13 @@ namespace PersonalTracking
             this.Hide();
             frm.ShowDialog();
             this.Visible = true;
+        }
+
+        private void FrmDepartmentList_Load(object sender, EventArgs e)
+        {
+            List<DEPARTMENT> list = new List<DEPARTMENT>();
+            list = BLL.DepartmentBLL.GetDepartments();
+            dataGridView1.DataSource = list;
         }
     }
 }

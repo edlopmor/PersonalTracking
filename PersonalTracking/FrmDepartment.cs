@@ -8,6 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//Añadimos las referencias para poder utilizar Linq
+using BLL;
+using DAL;
+
 namespace PersonalTracking
 {
     public partial class FrmDepartment : Form
@@ -27,8 +31,21 @@ namespace PersonalTracking
 
         }
 
-        private void btnCrear_Click(object sender, EventArgs e)
+        private void BtnCrear_Click(object sender, EventArgs e)
         {
+            if (txtBoxDepartment.Text.Trim() == "")
+            {
+                MessageBox.Show("Por favor rellena el nombre del departamento");
+            }
+            else
+            {
+                DEPARTMENT department = new DEPARTMENT();
+                department.DepartmentName = txtBoxDepartment.Text;
+                BLL.DepartmentBLL.AddDepartment(department);
+                MessageBox.Show("Departamento añadido con exito");
+                txtBoxDepartment.Clear();
+            }
+            
 
         }
 
@@ -37,4 +54,6 @@ namespace PersonalTracking
 
         }
     }
+        
+    
 }

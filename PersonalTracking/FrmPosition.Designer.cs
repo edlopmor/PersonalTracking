@@ -30,7 +30,7 @@ namespace PersonalTracking
         private void InitializeComponent()
         {
             this.lblPosition = new System.Windows.Forms.Label();
-            this.txtBoxPosition = new System.Windows.Forms.TextBox();
+            this.txtPosition = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxDepartment = new System.Windows.Forms.ComboBox();
             this.btnExit = new System.Windows.Forms.Button();
@@ -43,17 +43,17 @@ namespace PersonalTracking
             this.lblPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPosition.Location = new System.Drawing.Point(12, 17);
             this.lblPosition.Name = "lblPosition";
-            this.lblPosition.Size = new System.Drawing.Size(59, 20);
+            this.lblPosition.Size = new System.Drawing.Size(73, 25);
             this.lblPosition.TabIndex = 0;
             this.lblPosition.Text = "Puesto";
             // 
-            // txtBoxPosition
+            // txtPosition
             // 
-            this.txtBoxPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxPosition.Location = new System.Drawing.Point(171, 12);
-            this.txtBoxPosition.Name = "txtBoxPosition";
-            this.txtBoxPosition.Size = new System.Drawing.Size(298, 26);
-            this.txtBoxPosition.TabIndex = 1;
+            this.txtPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPosition.Location = new System.Drawing.Point(171, 12);
+            this.txtPosition.Name = "txtPosition";
+            this.txtPosition.Size = new System.Drawing.Size(298, 30);
+            this.txtPosition.TabIndex = 1;
             // 
             // label1
             // 
@@ -61,7 +61,7 @@ namespace PersonalTracking
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 67);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 20);
+            this.label1.Size = new System.Drawing.Size(135, 25);
             this.label1.TabIndex = 2;
             this.label1.Text = "Departamento";
             // 
@@ -71,7 +71,7 @@ namespace PersonalTracking
             this.comboBoxDepartment.FormattingEnabled = true;
             this.comboBoxDepartment.Location = new System.Drawing.Point(172, 64);
             this.comboBoxDepartment.Name = "comboBoxDepartment";
-            this.comboBoxDepartment.Size = new System.Drawing.Size(297, 28);
+            this.comboBoxDepartment.Size = new System.Drawing.Size(297, 33);
             this.comboBoxDepartment.TabIndex = 5;
             // 
             // btnExit
@@ -92,6 +92,7 @@ namespace PersonalTracking
             this.btnCrear.TabIndex = 6;
             this.btnCrear.Text = "Crear";
             this.btnCrear.UseVisualStyleBackColor = true;
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
             // FrmPosition
             // 
@@ -102,7 +103,7 @@ namespace PersonalTracking
             this.Controls.Add(this.btnCrear);
             this.Controls.Add(this.comboBoxDepartment);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtBoxPosition);
+            this.Controls.Add(this.txtPosition);
             this.Controls.Add(this.lblPosition);
             this.Name = "FrmPosition";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -116,7 +117,7 @@ namespace PersonalTracking
         #endregion
 
         private System.Windows.Forms.Label lblPosition;
-        private System.Windows.Forms.TextBox txtBoxPosition;
+        private System.Windows.Forms.TextBox txtPosition;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxDepartment;
         private System.Windows.Forms.Button btnExit;
