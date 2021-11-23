@@ -36,6 +36,9 @@ namespace DAL
     partial void InsertPOSITION(POSITION instance);
     partial void UpdatePOSITION(POSITION instance);
     partial void DeletePOSITION(POSITION instance);
+    partial void InsertEMPLOYEE(EMPLOYEE instance);
+    partial void UpdateEMPLOYEE(EMPLOYEE instance);
+    partial void DeleteEMPLOYEE(EMPLOYEE instance);
     #endregion
 		
 		public EmployeeDataClassDataContext() : 
@@ -66,14 +69,6 @@ namespace DAL
 				base(connection, mappingSource)
 		{
 			OnCreated();
-		}
-		
-		public System.Data.Linq.Table<EMPLOYEE> EMPLOYEE
-		{
-			get
-			{
-				return this.GetTable<EMPLOYEE>();
-			}
 		}
 		
 		public System.Data.Linq.Table<MONTH> MONTH
@@ -139,229 +134,12 @@ namespace DAL
 				return this.GetTable<POSITION>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.EMPLOYEE")]
-	public partial class EMPLOYEE
-	{
 		
-		private int _ID_Employee;
-		
-		private int _UserNo;
-		
-		private string _Name;
-		
-		private string _SurName;
-		
-		private string _ImagePath;
-		
-		private int _ID_Department;
-		
-		private int _ID_Position;
-		
-		private int _Salary;
-		
-		private System.Nullable<System.DateTime> _BirthDay;
-		
-		private string _Adress;
-		
-		private string _Password;
-		
-		private System.Nullable<bool> _isAdmin;
-		
-		public EMPLOYEE()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Employee", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
-		public int ID_Employee
+		public System.Data.Linq.Table<EMPLOYEE> EMPLOYEE
 		{
 			get
 			{
-				return this._ID_Employee;
-			}
-			set
-			{
-				if ((this._ID_Employee != value))
-				{
-					this._ID_Employee = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserNo", DbType="Int NOT NULL")]
-		public int UserNo
-		{
-			get
-			{
-				return this._UserNo;
-			}
-			set
-			{
-				if ((this._UserNo != value))
-				{
-					this._UserNo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this._Name = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SurName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string SurName
-		{
-			get
-			{
-				return this._SurName;
-			}
-			set
-			{
-				if ((this._SurName != value))
-				{
-					this._SurName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImagePath", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string ImagePath
-		{
-			get
-			{
-				return this._ImagePath;
-			}
-			set
-			{
-				if ((this._ImagePath != value))
-				{
-					this._ImagePath = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Department", DbType="Int NOT NULL")]
-		public int ID_Department
-		{
-			get
-			{
-				return this._ID_Department;
-			}
-			set
-			{
-				if ((this._ID_Department != value))
-				{
-					this._ID_Department = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Position", DbType="Int NOT NULL")]
-		public int ID_Position
-		{
-			get
-			{
-				return this._ID_Position;
-			}
-			set
-			{
-				if ((this._ID_Position != value))
-				{
-					this._ID_Position = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Salary", DbType="Int NOT NULL")]
-		public int Salary
-		{
-			get
-			{
-				return this._Salary;
-			}
-			set
-			{
-				if ((this._Salary != value))
-				{
-					this._Salary = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BirthDay", DbType="Date")]
-		public System.Nullable<System.DateTime> BirthDay
-		{
-			get
-			{
-				return this._BirthDay;
-			}
-			set
-			{
-				if ((this._BirthDay != value))
-				{
-					this._BirthDay = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Adress", DbType="VarChar(MAX)")]
-		public string Adress
-		{
-			get
-			{
-				return this._Adress;
-			}
-			set
-			{
-				if ((this._Adress != value))
-				{
-					this._Adress = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(20)")]
-		public string Password
-		{
-			get
-			{
-				return this._Password;
-			}
-			set
-			{
-				if ((this._Password != value))
-				{
-					this._Password = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isAdmin", DbType="Bit")]
-		public System.Nullable<bool> isAdmin
-		{
-			get
-			{
-				return this._isAdmin;
-			}
-			set
-			{
-				if ((this._isAdmin != value))
-				{
-					this._isAdmin = value;
-				}
+				return this.GetTable<EMPLOYEE>();
 			}
 		}
 	}
@@ -1041,6 +819,332 @@ namespace DAL
 					this._Deparment_ID = value;
 					this.SendPropertyChanged("Deparment_ID");
 					this.OnDeparment_IDChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.EMPLOYEE")]
+	public partial class EMPLOYEE : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID_Employee;
+		
+		private int _UserNo;
+		
+		private string _Name;
+		
+		private string _Apellido;
+		
+		private string _ImagePath;
+		
+		private int _Department_ID;
+		
+		private int _Position_ID;
+		
+		private int _Salary;
+		
+		private System.Nullable<System.DateTime> _Birthday;
+		
+		private string _Adress;
+		
+		private string _Password;
+		
+		private System.Nullable<bool> _isAdmin;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_EmployeeChanging(int value);
+    partial void OnID_EmployeeChanged();
+    partial void OnUserNoChanging(int value);
+    partial void OnUserNoChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnApellidoChanging(string value);
+    partial void OnApellidoChanged();
+    partial void OnImagePathChanging(string value);
+    partial void OnImagePathChanged();
+    partial void OnDepartment_IDChanging(int value);
+    partial void OnDepartment_IDChanged();
+    partial void OnPosition_IDChanging(int value);
+    partial void OnPosition_IDChanged();
+    partial void OnSalaryChanging(int value);
+    partial void OnSalaryChanged();
+    partial void OnBirthdayChanging(System.Nullable<System.DateTime> value);
+    partial void OnBirthdayChanged();
+    partial void OnAdressChanging(string value);
+    partial void OnAdressChanged();
+    partial void OnPasswordChanging(string value);
+    partial void OnPasswordChanged();
+    partial void OnisAdminChanging(System.Nullable<bool> value);
+    partial void OnisAdminChanged();
+    #endregion
+		
+		public EMPLOYEE()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Employee", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID_Employee
+		{
+			get
+			{
+				return this._ID_Employee;
+			}
+			set
+			{
+				if ((this._ID_Employee != value))
+				{
+					this.OnID_EmployeeChanging(value);
+					this.SendPropertyChanging();
+					this._ID_Employee = value;
+					this.SendPropertyChanged("ID_Employee");
+					this.OnID_EmployeeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserNo", DbType="Int NOT NULL")]
+		public int UserNo
+		{
+			get
+			{
+				return this._UserNo;
+			}
+			set
+			{
+				if ((this._UserNo != value))
+				{
+					this.OnUserNoChanging(value);
+					this.SendPropertyChanging();
+					this._UserNo = value;
+					this.SendPropertyChanged("UserNo");
+					this.OnUserNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Apellido", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Apellido
+		{
+			get
+			{
+				return this._Apellido;
+			}
+			set
+			{
+				if ((this._Apellido != value))
+				{
+					this.OnApellidoChanging(value);
+					this.SendPropertyChanging();
+					this._Apellido = value;
+					this.SendPropertyChanged("Apellido");
+					this.OnApellidoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImagePath", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string ImagePath
+		{
+			get
+			{
+				return this._ImagePath;
+			}
+			set
+			{
+				if ((this._ImagePath != value))
+				{
+					this.OnImagePathChanging(value);
+					this.SendPropertyChanging();
+					this._ImagePath = value;
+					this.SendPropertyChanged("ImagePath");
+					this.OnImagePathChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Department_ID", DbType="Int NOT NULL")]
+		public int Department_ID
+		{
+			get
+			{
+				return this._Department_ID;
+			}
+			set
+			{
+				if ((this._Department_ID != value))
+				{
+					this.OnDepartment_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Department_ID = value;
+					this.SendPropertyChanged("Department_ID");
+					this.OnDepartment_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Position_ID", DbType="Int NOT NULL")]
+		public int Position_ID
+		{
+			get
+			{
+				return this._Position_ID;
+			}
+			set
+			{
+				if ((this._Position_ID != value))
+				{
+					this.OnPosition_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Position_ID = value;
+					this.SendPropertyChanged("Position_ID");
+					this.OnPosition_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Salary", DbType="Int NOT NULL")]
+		public int Salary
+		{
+			get
+			{
+				return this._Salary;
+			}
+			set
+			{
+				if ((this._Salary != value))
+				{
+					this.OnSalaryChanging(value);
+					this.SendPropertyChanging();
+					this._Salary = value;
+					this.SendPropertyChanged("Salary");
+					this.OnSalaryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Birthday", DbType="Date")]
+		public System.Nullable<System.DateTime> Birthday
+		{
+			get
+			{
+				return this._Birthday;
+			}
+			set
+			{
+				if ((this._Birthday != value))
+				{
+					this.OnBirthdayChanging(value);
+					this.SendPropertyChanging();
+					this._Birthday = value;
+					this.SendPropertyChanged("Birthday");
+					this.OnBirthdayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Adress", DbType="VarChar(MAX)")]
+		public string Adress
+		{
+			get
+			{
+				return this._Adress;
+			}
+			set
+			{
+				if ((this._Adress != value))
+				{
+					this.OnAdressChanging(value);
+					this.SendPropertyChanging();
+					this._Adress = value;
+					this.SendPropertyChanged("Adress");
+					this.OnAdressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(20)")]
+		public string Password
+		{
+			get
+			{
+				return this._Password;
+			}
+			set
+			{
+				if ((this._Password != value))
+				{
+					this.OnPasswordChanging(value);
+					this.SendPropertyChanging();
+					this._Password = value;
+					this.SendPropertyChanged("Password");
+					this.OnPasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isAdmin", DbType="Bit")]
+		public System.Nullable<bool> isAdmin
+		{
+			get
+			{
+				return this._isAdmin;
+			}
+			set
+			{
+				if ((this._isAdmin != value))
+				{
+					this.OnisAdminChanging(value);
+					this.SendPropertyChanging();
+					this._isAdmin = value;
+					this.SendPropertyChanged("isAdmin");
+					this.OnisAdminChanged();
 				}
 			}
 		}

@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BLL;
+using DAL;
+using DAL.DTO;
+using System.IO;
 
 namespace PersonalTracking
 {
@@ -30,6 +34,122 @@ namespace PersonalTracking
         private void textBoxSalary_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = General.isNumber(e);
+        }
+
+        EmployeeDTO dto = new EmployeeDTO();
+
+        private void FrmEmployee_Load(object sender, EventArgs e)
+        {
+            
+            dto = EmployeeBLL.GetAll();
+            comboBoxDepartment.DataSource = dto.Departments;
+            comboBoxDepartment.DisplayMember = "DepartmentName";
+            comboBoxDepartment.ValueMember = "ID";
+            comboBoxDepartment.SelectedIndex = -1;
+
+            comboBoxPosition.DataSource = dto.Positions;
+            comboBoxPosition.DisplayMember = "PositionName";
+            comboBoxPosition.ValueMember = "ID";
+            comboBoxPosition.SelectedIndex = -1;
+            comboFull = true;
+        }
+        bool comboFull = false; 
+
+        private void comboBoxDepartment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboFull)
+            {
+                //Filtrar que los puestos de 
+                int deparmentID = Convert.ToInt32(comboBoxDepartment.SelectedValue);
+                //Hacer que el comboBox seleccione las posiciones donde el Department id coincida con el del departamento
+                comboBoxPosition.DataSource = dto.Positions.Where(x => x.Deparment_ID == deparmentID).ToList();
+                comboBoxPosition.SelectedIndex = -1;
+            }
+            
+        }
+        string filename = null;
+        private void buttonExaminar_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {                  
+                pictureBox1.Load(openFileDialog1.FileName);
+                textBoxImagePath.Text = openFileDialog1.FileName;
+                //TO-DO , hacer que la imagen se redimensione...
+                string Unique = Guid.NewGuid().ToString();
+                
+                filename += Unique + openFileDialog1.SafeFileName;
+            }
+        }
+        
+        private void btnCrear_Click(object sender, EventArgs e)
+        {
+            if (textBoxUserNo.Text.Trim()=="")
+                MessageBox.Show("El usuario no puede estar vacio");
+            else if (txtBoxPassword.Text.Trim() == "")  
+                MessageBox.Show("La contraseña no puede estar vacio");
+            else if (textBoxNombre.Text.Trim() == "")
+                MessageBox.Show("El nombre no puede estar vacio");
+            else if (textBoxApellido.Text.Trim() == "")
+                MessageBox.Show("El apellido no puede estar vacio");
+            else if (textBoxSalary.Text.Trim() == "")            
+                MessageBox.Show("El salario no puede estar vacio");
+            else if (comboBoxDepartment.SelectedIndex == -1)           
+                MessageBox.Show("Hay que seleccionar un departamento del combobox");           
+            else if (comboBoxPosition.SelectedIndex == -1)           
+                MessageBox.Show("Hay que seleccionar un puesto de trabajo");
+            else
+            {
+                EMPLOYEE employee = new EMPLOYEE();
+                employee.UserNo = Convert.ToInt32(textBoxUserNo.Text);
+                employee.Password = txtBoxPassword.Text;
+                employee.isAdmin = checkBoxIsAdmin.Checked;
+                employee.Name = textBoxNombre.Text;
+                employee.Apellido = textBoxApellido.Text;
+                employee.Salary = Convert.ToInt32(textBoxSalary.Text);
+                employee.Department_ID = Convert.ToInt32( comboBoxDepartment.SelectedValue);
+                employee.Position_ID = Convert.ToInt32(comboBoxPosition.SelectedValue);
+
+                employee.Adress = textBoxDireccion.Text;
+                employee.Birthday = dateTimePicker1.Value;
+                employee.ImagePath = filename;
+                EmployeeBLL.addEmployee(employee);
+                File.Copy(textBoxImagePath.Text, @"images\\" + filename);
+                MessageBox.Show("Empleado insertado con exito");
+
+
+                textBoxUserNo.Clear();
+                txtBoxPassword.Clear();
+                checkBoxIsAdmin.Checked = false;
+                textBoxNombre.Clear();
+                textBoxApellido.Clear();
+                textBoxSalary.Clear();
+                textBoxDireccion.Clear();
+                textBoxImagePath.Clear();
+                pictureBox1.Image = null;
+                comboFull = false;
+                comboBoxDepartment.SelectedIndex = -1;
+                comboBoxPosition.SelectedIndex = -1;
+                comboFull = true;
+                dateTimePicker1.Value = DateTime.Today;
+            }
+        }
+        bool isUnique = false;
+        private void btnComprobar_Click(object sender, EventArgs e)
+        {
+            if (textBoxUserNo.Text.Trim() == "")
+                MessageBox.Show("El usuario no puede estar vacio");
+            else
+            {
+                isUnique = EmployeeBLL.isUnique(Convert.ToInt32(textBoxUserNo.Text));
+                if (!isUnique)
+                {
+                    MessageBox.Show("Ese numero de usuario ya existe");
+                }
+                else
+                {
+                    MessageBox.Show("Puede usar ese numero de usuario");
+                }
+            }
         }
     }
 }
