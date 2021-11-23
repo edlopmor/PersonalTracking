@@ -10,28 +10,24 @@ using System.Windows.Forms;
 
 namespace PersonalTracking
 {
-    public partial class FrmLogin : Form
+    public partial class FrmDepartmentList : Form
     {
-        public FrmLogin()
+        public FrmDepartmentList()
         {
             InitializeComponent();
         }
 
-        private void textBoxUserNo_KeyPress(object sender, KeyPressEventArgs e)
+        private void BtnCerrar_Click(object sender, EventArgs e)
         {
-            e.Handled = General.isNumber(e);
+            this.Close();
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
+        private void BtnAdd_Click(object sender, EventArgs e)
         {
-            Application.Exit();
-        }
-
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            FrmMain frm = new FrmMain();
+            FrmDepartment frm = new FrmDepartment();
             this.Hide();
             frm.ShowDialog();
+            this.Visible = true;
         }
     }
 }

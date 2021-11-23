@@ -42,100 +42,107 @@ namespace PersonalTracking
             // btnTask
             // 
             this.btnTask.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btnTask.Location = new System.Drawing.Point(124, 15);
+            this.btnTask.Location = new System.Drawing.Point(193, 13);
             this.btnTask.Margin = new System.Windows.Forms.Padding(4);
             this.btnTask.Name = "btnTask";
-            this.btnTask.Size = new System.Drawing.Size(100, 92);
+            this.btnTask.Size = new System.Drawing.Size(172, 152);
             this.btnTask.TabIndex = 1;
             this.btnTask.Text = "Task";
             this.btnTask.UseVisualStyleBackColor = false;
+            this.btnTask.Click += new System.EventHandler(this.BtnTask_Click);
             // 
             // btnSalary
             // 
             this.btnSalary.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnSalary.Location = new System.Drawing.Point(232, 15);
+            this.btnSalary.Location = new System.Drawing.Point(373, 13);
             this.btnSalary.Margin = new System.Windows.Forms.Padding(4);
             this.btnSalary.Name = "btnSalary";
-            this.btnSalary.Size = new System.Drawing.Size(100, 92);
+            this.btnSalary.Size = new System.Drawing.Size(172, 152);
             this.btnSalary.TabIndex = 2;
             this.btnSalary.Text = "Salary";
             this.btnSalary.UseVisualStyleBackColor = false;
+            this.btnSalary.Click += new System.EventHandler(this.BtnSalary_Click);
             // 
             // btnPermission
             // 
             this.btnPermission.BackColor = System.Drawing.Color.Green;
-            this.btnPermission.Location = new System.Drawing.Point(16, 114);
+            this.btnPermission.Location = new System.Drawing.Point(13, 173);
             this.btnPermission.Margin = new System.Windows.Forms.Padding(4);
             this.btnPermission.Name = "btnPermission";
-            this.btnPermission.Size = new System.Drawing.Size(100, 92);
+            this.btnPermission.Size = new System.Drawing.Size(172, 152);
             this.btnPermission.TabIndex = 3;
             this.btnPermission.Text = "Permission";
             this.btnPermission.UseVisualStyleBackColor = false;
+            this.btnPermission.Click += new System.EventHandler(this.BtnPermission_Click);
             // 
             // btnDepartment
             // 
             this.btnDepartment.BackColor = System.Drawing.Color.Silver;
-            this.btnDepartment.Location = new System.Drawing.Point(124, 114);
+            this.btnDepartment.Location = new System.Drawing.Point(193, 173);
             this.btnDepartment.Margin = new System.Windows.Forms.Padding(4);
             this.btnDepartment.Name = "btnDepartment";
-            this.btnDepartment.Size = new System.Drawing.Size(100, 92);
+            this.btnDepartment.Size = new System.Drawing.Size(172, 152);
             this.btnDepartment.TabIndex = 4;
             this.btnDepartment.Text = "Department";
             this.btnDepartment.UseVisualStyleBackColor = false;
+            this.btnDepartment.Click += new System.EventHandler(this.BtnDepartment_Click);
             // 
             // btnPosition
             // 
             this.btnPosition.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnPosition.Location = new System.Drawing.Point(232, 114);
+            this.btnPosition.Location = new System.Drawing.Point(373, 173);
             this.btnPosition.Margin = new System.Windows.Forms.Padding(4);
             this.btnPosition.Name = "btnPosition";
-            this.btnPosition.Size = new System.Drawing.Size(100, 92);
+            this.btnPosition.Size = new System.Drawing.Size(172, 152);
             this.btnPosition.TabIndex = 5;
             this.btnPosition.Text = "Position";
             this.btnPosition.UseVisualStyleBackColor = false;
+            this.btnPosition.Click += new System.EventHandler(this.BtnPosition_Click);
             // 
             // btnLogout
             // 
             this.btnLogout.BackColor = System.Drawing.Color.Yellow;
-            this.btnLogout.Location = new System.Drawing.Point(72, 214);
+            this.btnLogout.Location = new System.Drawing.Point(88, 333);
             this.btnLogout.Margin = new System.Windows.Forms.Padding(4);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(100, 92);
+            this.btnLogout.Size = new System.Drawing.Size(159, 126);
             this.btnLogout.TabIndex = 7;
             this.btnLogout.Text = "Log out ";
             this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.Color.Red;
             this.btnExit.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnExit.Location = new System.Drawing.Point(180, 214);
+            this.btnExit.Location = new System.Drawing.Point(293, 333);
             this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(100, 92);
+            this.btnExit.Size = new System.Drawing.Size(165, 126);
             this.btnExit.TabIndex = 8;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = false;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // btnEmployee
             // 
             this.btnEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnEmployee.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEmployee.Location = new System.Drawing.Point(16, 13);
+            this.btnEmployee.Location = new System.Drawing.Point(13, 13);
             this.btnEmployee.Margin = new System.Windows.Forms.Padding(4);
             this.btnEmployee.Name = "btnEmployee";
-            this.btnEmployee.Size = new System.Drawing.Size(100, 92);
+            this.btnEmployee.Size = new System.Drawing.Size(172, 152);
             this.btnEmployee.TabIndex = 0;
             this.btnEmployee.Text = "Employee";
             this.btnEmployee.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnEmployee.UseVisualStyleBackColor = false;
+            this.btnEmployee.Click += new System.EventHandler(this.BtnEmployee_Click);
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(286, 264);
+            this.ClientSize = new System.Drawing.Size(560, 472);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnPosition);
@@ -146,6 +153,7 @@ namespace PersonalTracking
             this.Controls.Add(this.btnEmployee);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EmployeeTraking";
             this.ResumeLayout(false);
 

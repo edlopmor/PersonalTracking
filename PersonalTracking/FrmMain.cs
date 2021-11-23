@@ -17,9 +17,65 @@ namespace PersonalTracking
             InitializeComponent();
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
+        private void BtnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void BtnEmployee_Click(object sender, EventArgs e)
+        {
+            FrmEmployeeList frm = new FrmEmployeeList();
+            this.Hide();
+            frm.ShowDialog();
+            this.Visible = true;
+        }
+
+        private void BtnTask_Click(object sender, EventArgs e)
+        {
+            FrmTaskList frm = new FrmTaskList();
+            this.Hide();
+            frm.ShowDialog();
+            this.Visible = true;
+        }
+
+        private void BtnSalary_Click(object sender, EventArgs e)
+        {
+            FrmSalaryList frm = new FrmSalaryList();
+            this.Hide();
+            frm.ShowDialog();
+            this.Visible = true;
+        }
+
+        private void BtnPermission_Click(object sender, EventArgs e)
+        {
+            FrmPermissionList frm = new FrmPermissionList();
+            this.Hide();
+            frm.ShowDialog();
+            this.Visible = true;
+        }
+
+        private void BtnDepartment_Click(object sender, EventArgs e)
+        {
+            FrmDepartmentList frm = new FrmDepartmentList();
+            this.Hide();
+            frm.ShowDialog();
+            this.Visible = true;
+        }
+
+        private void BtnPosition_Click(object sender, EventArgs e)
+        {
+            FrmPositionList frm = new FrmPositionList();
+            this.Hide();
+            frm.ShowDialog();
+            this.Visible = true;
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            FrmLogin frm = new FrmLogin();
+            this.Hide();
+            frm.ShowDialog();
+            
         }
     }
 }
