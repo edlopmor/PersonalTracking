@@ -86,6 +86,7 @@ namespace PersonalTracking
             this.Hide();
             frm.ShowDialog();
             this.Visible = true;
+
             FillAlData();
             cleanFilters();
         }

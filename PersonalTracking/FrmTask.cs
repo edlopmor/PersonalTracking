@@ -114,6 +114,7 @@ namespace PersonalTracking
                 MessageBox.Show("Inserccion realizada con exito");
                 textBoxTitulo.Clear();
                 textBoxDescripcion.Clear();
+
                 task = new TASK();
             }
             
