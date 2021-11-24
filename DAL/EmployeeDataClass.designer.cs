@@ -42,6 +42,9 @@ namespace DAL
     partial void InsertTASK(TASK instance);
     partial void UpdateTASK(TASK instance);
     partial void DeleteTASK(TASK instance);
+    partial void InsertSALARY(SALARY instance);
+    partial void UpdateSALARY(SALARY instance);
+    partial void DeleteSALARY(SALARY instance);
     #endregion
 		
 		public EmployeeDataClassDataContext() : 
@@ -106,14 +109,6 @@ namespace DAL
 			}
 		}
 		
-		public System.Data.Linq.Table<SALARY> SALARY
-		{
-			get
-			{
-				return this.GetTable<SALARY>();
-			}
-		}
-		
 		public System.Data.Linq.Table<DEPARTMENT> DEPARTMENT
 		{
 			get
@@ -143,6 +138,14 @@ namespace DAL
 			get
 			{
 				return this.GetTable<TASK>();
+			}
+		}
+		
+		public System.Data.Linq.Table<SALARY> SALARY
+		{
+			get
+			{
+				return this.GetTable<SALARY>();
 			}
 		}
 	}
@@ -412,105 +415,6 @@ namespace DAL
 				if ((this._StateName != value))
 				{
 					this._StateName = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SALARY")]
-	public partial class SALARY
-	{
-		
-		private int _ID_Salary;
-		
-		private int _ID_Employee;
-		
-		private int _Amount;
-		
-		private int _Year;
-		
-		private System.Nullable<int> _Id_Month;
-		
-		public SALARY()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Salary", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
-		public int ID_Salary
-		{
-			get
-			{
-				return this._ID_Salary;
-			}
-			set
-			{
-				if ((this._ID_Salary != value))
-				{
-					this._ID_Salary = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Employee", DbType="Int NOT NULL")]
-		public int ID_Employee
-		{
-			get
-			{
-				return this._ID_Employee;
-			}
-			set
-			{
-				if ((this._ID_Employee != value))
-				{
-					this._ID_Employee = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Int NOT NULL")]
-		public int Amount
-		{
-			get
-			{
-				return this._Amount;
-			}
-			set
-			{
-				if ((this._Amount != value))
-				{
-					this._Amount = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Year", DbType="Int NOT NULL")]
-		public int Year
-		{
-			get
-			{
-				return this._Year;
-			}
-			set
-			{
-				if ((this._Year != value))
-				{
-					this._Year = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_Month", DbType="Int")]
-		public System.Nullable<int> Id_Month
-		{
-			get
-			{
-				return this._Id_Month;
-			}
-			set
-			{
-				if ((this._Id_Month != value))
-				{
-					this._Id_Month = value;
 				}
 			}
 		}
@@ -1219,6 +1123,164 @@ namespace DAL
 					this._TaskState = value;
 					this.SendPropertyChanged("TaskState");
 					this.OnTaskStateChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SALARY")]
+	public partial class SALARY : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID_Salary;
+		
+		private int _ID_Employee;
+		
+		private int _Amount;
+		
+		private int _Year;
+		
+		private System.Nullable<int> _Id_Month;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_SalaryChanging(int value);
+    partial void OnID_SalaryChanged();
+    partial void OnID_EmployeeChanging(int value);
+    partial void OnID_EmployeeChanged();
+    partial void OnAmountChanging(int value);
+    partial void OnAmountChanged();
+    partial void OnYearChanging(int value);
+    partial void OnYearChanged();
+    partial void OnId_MonthChanging(System.Nullable<int> value);
+    partial void OnId_MonthChanged();
+    #endregion
+		
+		public SALARY()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Salary", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID_Salary
+		{
+			get
+			{
+				return this._ID_Salary;
+			}
+			set
+			{
+				if ((this._ID_Salary != value))
+				{
+					this.OnID_SalaryChanging(value);
+					this.SendPropertyChanging();
+					this._ID_Salary = value;
+					this.SendPropertyChanged("ID_Salary");
+					this.OnID_SalaryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Employee", DbType="Int NOT NULL")]
+		public int ID_Employee
+		{
+			get
+			{
+				return this._ID_Employee;
+			}
+			set
+			{
+				if ((this._ID_Employee != value))
+				{
+					this.OnID_EmployeeChanging(value);
+					this.SendPropertyChanging();
+					this._ID_Employee = value;
+					this.SendPropertyChanged("ID_Employee");
+					this.OnID_EmployeeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Int NOT NULL")]
+		public int Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this.OnAmountChanging(value);
+					this.SendPropertyChanging();
+					this._Amount = value;
+					this.SendPropertyChanged("Amount");
+					this.OnAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Year", DbType="Int NOT NULL")]
+		public int Year
+		{
+			get
+			{
+				return this._Year;
+			}
+			set
+			{
+				if ((this._Year != value))
+				{
+					this.OnYearChanging(value);
+					this.SendPropertyChanging();
+					this._Year = value;
+					this.SendPropertyChanged("Year");
+					this.OnYearChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_Month", DbType="Int")]
+		public System.Nullable<int> Id_Month
+		{
+			get
+			{
+				return this._Id_Month;
+			}
+			set
+			{
+				if ((this._Id_Month != value))
+				{
+					this.OnId_MonthChanging(value);
+					this.SendPropertyChanging();
+					this._Id_Month = value;
+					this.SendPropertyChanged("Id_Month");
+					this.OnId_MonthChanged();
 				}
 			}
 		}
