@@ -31,28 +31,28 @@ namespace PersonalTracking
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            //if (textBoxUserNo.Text.Trim() == "" || textBoxPassword.Text.Trim() == "")
-            //    MessageBox.Show("Debe rellenar el campo usuario o password");
-            //else
-            //{
-            //    List<EMPLOYEE> employeeList = EmployeeBLL.GetEmployees(Convert.ToInt32(textBoxUserNo.Text), textBoxPassword.Text);
-            //    if (employeeList.Count == 0)
-            //    {
-            //        MessageBox.Show("No hay usuarios con ese numero de usuario o contraseña incorrecta");
-            //    }
-            //    else
-            //    {
-                    //EMPLOYEE employee = new EMPLOYEE();
-                    //employee = employeeList.First();
-                    //UserStatic.EmployeeID = employee.ID_Employee;
-                    //UserStatic.UserNo = employee.UserNo;
-                    //UserStatic.isAdmin = employee.isAdmin;
+            if (textBoxUserNo.Text.Trim() == "" || textBoxPassword.Text.Trim() == "")
+                MessageBox.Show("Debe rellenar el campo usuario o password");
+            else
+            {
+                List<EMPLOYEE> employeeList = EmployeeBLL.GetEmployees(Convert.ToInt32(textBoxUserNo.Text), textBoxPassword.Text);
+                if (employeeList.Count == 0)
+                {
+                    MessageBox.Show("No hay usuarios con ese numero de usuario o contraseña incorrecta");
+                }
+                else
+                {
+                    EMPLOYEE employee = new EMPLOYEE();
+                    employee = employeeList.First();
+                    UserStatic.EmployeeID = employee.ID_Employee;
+                    UserStatic.UserNo = employee.UserNo;
+                    UserStatic.isAdmin = employee.isAdmin;
                     FrmMain frm = new FrmMain();
                     this.Hide();
                     frm.ShowDialog();
-            //    }
+                }
 
-            //}
+            }
         }
 
         private void FrmLogin_Load(object sender, EventArgs e)

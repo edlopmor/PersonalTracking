@@ -49,7 +49,7 @@ namespace PersonalTracking
             this.textBoxUserNo.Location = new System.Drawing.Point(217, 15);
             this.textBoxUserNo.Name = "textBoxUserNo";
             this.textBoxUserNo.ReadOnly = true;
-            this.textBoxUserNo.Size = new System.Drawing.Size(200, 26);
+            this.textBoxUserNo.Size = new System.Drawing.Size(200, 30);
             this.textBoxUserNo.TabIndex = 18;
             // 
             // label1
@@ -58,7 +58,7 @@ namespace PersonalTracking
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 20);
+            this.label1.Size = new System.Drawing.Size(77, 25);
             this.label1.TabIndex = 17;
             this.label1.Text = "User ID";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -68,8 +68,9 @@ namespace PersonalTracking
             this.dateTimePickerFinish.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerFinish.Location = new System.Drawing.Point(217, 102);
             this.dateTimePickerFinish.Name = "dateTimePickerFinish";
-            this.dateTimePickerFinish.Size = new System.Drawing.Size(200, 26);
+            this.dateTimePickerFinish.Size = new System.Drawing.Size(200, 30);
             this.dateTimePickerFinish.TabIndex = 30;
+            this.dateTimePickerFinish.ValueChanged += new System.EventHandler(this.dateTimePickerFinish_ValueChanged);
             // 
             // label5
             // 
@@ -77,7 +78,7 @@ namespace PersonalTracking
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(12, 102);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(87, 20);
+            this.label5.Size = new System.Drawing.Size(107, 25);
             this.label5.TabIndex = 29;
             this.label5.Text = "Fecha final";
             this.label5.Click += new System.EventHandler(this.label5_Click);
@@ -87,8 +88,9 @@ namespace PersonalTracking
             this.dateTimePickerStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerStart.Location = new System.Drawing.Point(217, 59);
             this.dateTimePickerStart.Name = "dateTimePickerStart";
-            this.dateTimePickerStart.Size = new System.Drawing.Size(200, 26);
+            this.dateTimePickerStart.Size = new System.Drawing.Size(200, 30);
             this.dateTimePickerStart.TabIndex = 28;
+            this.dateTimePickerStart.ValueChanged += new System.EventHandler(this.dateTimePickerStart_ValueChanged);
             // 
             // label9
             // 
@@ -96,7 +98,7 @@ namespace PersonalTracking
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(12, 59);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(93, 20);
+            this.label9.Size = new System.Drawing.Size(116, 25);
             this.label9.TabIndex = 27;
             this.label9.Text = "Fecha inicio";
             // 
@@ -106,7 +108,7 @@ namespace PersonalTracking
             this.textBoxDias.Location = new System.Drawing.Point(217, 141);
             this.textBoxDias.Name = "textBoxDias";
             this.textBoxDias.ReadOnly = true;
-            this.textBoxDias.Size = new System.Drawing.Size(200, 26);
+            this.textBoxDias.Size = new System.Drawing.Size(200, 30);
             this.textBoxDias.TabIndex = 32;
             // 
             // label2
@@ -115,7 +117,7 @@ namespace PersonalTracking
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 144);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 20);
+            this.label2.Size = new System.Drawing.Size(155, 25);
             this.label2.TabIndex = 31;
             this.label2.Text = "Dias vacaciones";
             // 
@@ -134,7 +136,7 @@ namespace PersonalTracking
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(12, 180);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(128, 20);
+            this.label3.Size = new System.Drawing.Size(160, 25);
             this.label3.TabIndex = 33;
             this.label3.Text = "Motivos solicitud ";
             // 
@@ -158,6 +160,7 @@ namespace PersonalTracking
             this.btnCrear.TabIndex = 38;
             this.btnCrear.Text = "Crear";
             this.btnCrear.UseVisualStyleBackColor = true;
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
             // FrmPermission
             // 
@@ -179,6 +182,7 @@ namespace PersonalTracking
             this.Name = "FrmPermission";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Solicitud permisos";
+            this.Load += new System.EventHandler(this.FrmPermission_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
