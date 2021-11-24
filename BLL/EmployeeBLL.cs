@@ -16,6 +16,7 @@ namespace BLL
             EmployeeDTO dto = new EmployeeDTO();
             dto.Departments = DepartmentDAO.GetDepartments();
             dto.Positions = PositionDAO.GetPositions();
+            dto.Employees = EmployeeDAO.GetEmployees();
             return dto;
         }
 
@@ -32,6 +33,11 @@ namespace BLL
                 return false;
             }
             return true;
+        }
+
+        public static List<EMPLOYEE> GetEmployees(int v, string text)
+        {
+            return EmployeeDAO.GetEmployees(v, text);
         }
     }
 }
