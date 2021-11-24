@@ -45,6 +45,9 @@ namespace DAL
     partial void InsertSALARY(SALARY instance);
     partial void UpdateSALARY(SALARY instance);
     partial void DeleteSALARY(SALARY instance);
+    partial void InsertPERMISSION(PERMISSION instance);
+    partial void UpdatePERMISSION(PERMISSION instance);
+    partial void DeletePERMISSION(PERMISSION instance);
     #endregion
 		
 		public EmployeeDataClassDataContext() : 
@@ -82,14 +85,6 @@ namespace DAL
 			get
 			{
 				return this.GetTable<MONTH>();
-			}
-		}
-		
-		public System.Data.Linq.Table<PERMISSION> PERMISSION
-		{
-			get
-			{
-				return this.GetTable<PERMISSION>();
 			}
 		}
 		
@@ -148,6 +143,14 @@ namespace DAL
 				return this.GetTable<SALARY>();
 			}
 		}
+		
+		public System.Data.Linq.Table<PERMISSION> PERMISSION
+		{
+			get
+			{
+				return this.GetTable<PERMISSION>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.MONTH")]
@@ -190,141 +193,6 @@ namespace DAL
 				if ((this._MonthName != value))
 				{
 					this._MonthName = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PERMISSION")]
-	public partial class PERMISSION
-	{
-		
-		private int _ID_Permission;
-		
-		private int _ID_Employee;
-		
-		private System.DateTime _PermissionStartDate;
-		
-		private System.DateTime _PermissionEndDate;
-		
-		private int _PermissionState;
-		
-		private string _PermissionExplanation;
-		
-		private int _PermissionDay;
-		
-		public PERMISSION()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Permission", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
-		public int ID_Permission
-		{
-			get
-			{
-				return this._ID_Permission;
-			}
-			set
-			{
-				if ((this._ID_Permission != value))
-				{
-					this._ID_Permission = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Employee", DbType="Int NOT NULL")]
-		public int ID_Employee
-		{
-			get
-			{
-				return this._ID_Employee;
-			}
-			set
-			{
-				if ((this._ID_Employee != value))
-				{
-					this._ID_Employee = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PermissionStartDate", DbType="Date NOT NULL")]
-		public System.DateTime PermissionStartDate
-		{
-			get
-			{
-				return this._PermissionStartDate;
-			}
-			set
-			{
-				if ((this._PermissionStartDate != value))
-				{
-					this._PermissionStartDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PermissionEndDate", DbType="Date NOT NULL")]
-		public System.DateTime PermissionEndDate
-		{
-			get
-			{
-				return this._PermissionEndDate;
-			}
-			set
-			{
-				if ((this._PermissionEndDate != value))
-				{
-					this._PermissionEndDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PermissionState", DbType="Int NOT NULL")]
-		public int PermissionState
-		{
-			get
-			{
-				return this._PermissionState;
-			}
-			set
-			{
-				if ((this._PermissionState != value))
-				{
-					this._PermissionState = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PermissionExplanation", DbType="NVarChar(MAX)")]
-		public string PermissionExplanation
-		{
-			get
-			{
-				return this._PermissionExplanation;
-			}
-			set
-			{
-				if ((this._PermissionExplanation != value))
-				{
-					this._PermissionExplanation = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PermissionDay", DbType="Int NOT NULL")]
-		public int PermissionDay
-		{
-			get
-			{
-				return this._PermissionDay;
-			}
-			set
-			{
-				if ((this._PermissionDay != value))
-				{
-					this._PermissionDay = value;
 				}
 			}
 		}
@@ -1281,6 +1149,212 @@ namespace DAL
 					this._Id_Month = value;
 					this.SendPropertyChanged("Id_Month");
 					this.OnId_MonthChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PERMISSION")]
+	public partial class PERMISSION : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID_Permission;
+		
+		private int _ID_Employee;
+		
+		private System.DateTime _PermissionStartDate;
+		
+		private System.DateTime _PermissionEndDate;
+		
+		private int _PermissionState;
+		
+		private string _PermissionExplanation;
+		
+		private int _PermissionDay;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_PermissionChanging(int value);
+    partial void OnID_PermissionChanged();
+    partial void OnID_EmployeeChanging(int value);
+    partial void OnID_EmployeeChanged();
+    partial void OnPermissionStartDateChanging(System.DateTime value);
+    partial void OnPermissionStartDateChanged();
+    partial void OnPermissionEndDateChanging(System.DateTime value);
+    partial void OnPermissionEndDateChanged();
+    partial void OnPermissionStateChanging(int value);
+    partial void OnPermissionStateChanged();
+    partial void OnPermissionExplanationChanging(string value);
+    partial void OnPermissionExplanationChanged();
+    partial void OnPermissionDayChanging(int value);
+    partial void OnPermissionDayChanged();
+    #endregion
+		
+		public PERMISSION()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Permission", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID_Permission
+		{
+			get
+			{
+				return this._ID_Permission;
+			}
+			set
+			{
+				if ((this._ID_Permission != value))
+				{
+					this.OnID_PermissionChanging(value);
+					this.SendPropertyChanging();
+					this._ID_Permission = value;
+					this.SendPropertyChanged("ID_Permission");
+					this.OnID_PermissionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Employee", DbType="Int NOT NULL")]
+		public int ID_Employee
+		{
+			get
+			{
+				return this._ID_Employee;
+			}
+			set
+			{
+				if ((this._ID_Employee != value))
+				{
+					this.OnID_EmployeeChanging(value);
+					this.SendPropertyChanging();
+					this._ID_Employee = value;
+					this.SendPropertyChanged("ID_Employee");
+					this.OnID_EmployeeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PermissionStartDate", DbType="Date NOT NULL")]
+		public System.DateTime PermissionStartDate
+		{
+			get
+			{
+				return this._PermissionStartDate;
+			}
+			set
+			{
+				if ((this._PermissionStartDate != value))
+				{
+					this.OnPermissionStartDateChanging(value);
+					this.SendPropertyChanging();
+					this._PermissionStartDate = value;
+					this.SendPropertyChanged("PermissionStartDate");
+					this.OnPermissionStartDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PermissionEndDate", DbType="Date NOT NULL")]
+		public System.DateTime PermissionEndDate
+		{
+			get
+			{
+				return this._PermissionEndDate;
+			}
+			set
+			{
+				if ((this._PermissionEndDate != value))
+				{
+					this.OnPermissionEndDateChanging(value);
+					this.SendPropertyChanging();
+					this._PermissionEndDate = value;
+					this.SendPropertyChanged("PermissionEndDate");
+					this.OnPermissionEndDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PermissionState", DbType="Int NOT NULL")]
+		public int PermissionState
+		{
+			get
+			{
+				return this._PermissionState;
+			}
+			set
+			{
+				if ((this._PermissionState != value))
+				{
+					this.OnPermissionStateChanging(value);
+					this.SendPropertyChanging();
+					this._PermissionState = value;
+					this.SendPropertyChanged("PermissionState");
+					this.OnPermissionStateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PermissionExplanation", DbType="NVarChar(MAX)")]
+		public string PermissionExplanation
+		{
+			get
+			{
+				return this._PermissionExplanation;
+			}
+			set
+			{
+				if ((this._PermissionExplanation != value))
+				{
+					this.OnPermissionExplanationChanging(value);
+					this.SendPropertyChanging();
+					this._PermissionExplanation = value;
+					this.SendPropertyChanged("PermissionExplanation");
+					this.OnPermissionExplanationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PermissionDay", DbType="Int NOT NULL")]
+		public int PermissionDay
+		{
+			get
+			{
+				return this._PermissionDay;
+			}
+			set
+			{
+				if ((this._PermissionDay != value))
+				{
+					this.OnPermissionDayChanging(value);
+					this.SendPropertyChanging();
+					this._PermissionDay = value;
+					this.SendPropertyChanged("PermissionDay");
+					this.OnPermissionDayChanged();
 				}
 			}
 		}
