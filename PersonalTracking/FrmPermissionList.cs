@@ -156,13 +156,19 @@ namespace PersonalTracking
             //Filtramos por el comboPosition
             if (comboBoxDepartment.SelectedIndex != -1)
                 list = list.Where(x => x.PositionID == Convert.ToInt32(comboBoxPosition.SelectedValue)).ToList();
-            //Filtro de fecha para comprobar. 
+            //Filtro por fechas
             if (rbStartDate.Checked)
-                list = list.Where(x => x.StartDate > Convert.ToDateTime(dateTimePickerStart.Value) &&
-                x.StartDate < Convert.ToDateTime(dateTimePickerFinish.Value)).ToList();
-            if (rbFinihsDate.Checked)
-                list = list.Where(x => x.EndDate < Convert.ToDateTime(dateTimePickerStart.Value) &&
-                x.EndDate > Convert.ToDateTime(dateTimePickerFinish.Value)).ToList();
+                list = list.Where(x => x.StartDate == Convert.ToDateTime(dateTimePickerStart.Value)).ToList();
+                else if(rbFinihsDate.Checked)
+                list = list.Where(x => x.EndDate == Convert.ToDateTime(dateTimePickerFinish.Value)).ToList();
+              
+            //El codigo del curso no actuaba en referencia  los checks . 
+            //list = list.Where(x => x.StartDate<Convert.ToDateTime(dateTimePickerFinish.Value) &&
+            //x.StartDate > Convert.ToDateTime(dateTimePickerStart.Value)).ToList();
+            //else if (rbFinihsDate.Checked)
+            //    list = list.Where(x => x.EndDate < Convert.ToDateTime(dateTimePickerFinish.Value) &&
+            //    x.EndDate > Convert.ToDateTime(dateTimePickerStart.Value)).ToList();
+
             if (comboBoxState.SelectedIndex != -1)
                 list = list.Where(x => x.StateId == Convert.ToInt32(comboBoxState.SelectedValue)).ToList();
 
