@@ -76,7 +76,6 @@ namespace PersonalTracking
             dataGridView1.Columns[13].HeaderText = "Fecha inicial";
             dataGridView1.Columns[14].Visible = false;
 
-            MessageBox.Show(UserStatic.EmployeeID.ToString());
 
         }
 

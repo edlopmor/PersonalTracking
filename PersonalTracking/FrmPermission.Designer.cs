@@ -46,29 +46,31 @@ namespace PersonalTracking
             // textBoxUserNo
             // 
             this.textBoxUserNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxUserNo.Location = new System.Drawing.Point(217, 15);
+            this.textBoxUserNo.Location = new System.Drawing.Point(163, 12);
+            this.textBoxUserNo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxUserNo.Name = "textBoxUserNo";
             this.textBoxUserNo.ReadOnly = true;
-            this.textBoxUserNo.Size = new System.Drawing.Size(200, 30);
+            this.textBoxUserNo.Size = new System.Drawing.Size(151, 30);
             this.textBoxUserNo.TabIndex = 18;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 15);
+            this.label1.Location = new System.Drawing.Point(9, 12);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 25);
             this.label1.TabIndex = 17;
             this.label1.Text = "User ID";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // dateTimePickerFinish
             // 
             this.dateTimePickerFinish.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerFinish.Location = new System.Drawing.Point(217, 102);
+            this.dateTimePickerFinish.Location = new System.Drawing.Point(163, 83);
+            this.dateTimePickerFinish.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTimePickerFinish.Name = "dateTimePickerFinish";
-            this.dateTimePickerFinish.Size = new System.Drawing.Size(200, 30);
+            this.dateTimePickerFinish.Size = new System.Drawing.Size(151, 30);
             this.dateTimePickerFinish.TabIndex = 30;
             this.dateTimePickerFinish.ValueChanged += new System.EventHandler(this.dateTimePickerFinish_ValueChanged);
             // 
@@ -76,19 +78,20 @@ namespace PersonalTracking
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 102);
+            this.label5.Location = new System.Drawing.Point(9, 83);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(107, 25);
             this.label5.TabIndex = 29;
             this.label5.Text = "Fecha final";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // dateTimePickerStart
             // 
             this.dateTimePickerStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerStart.Location = new System.Drawing.Point(217, 59);
+            this.dateTimePickerStart.Location = new System.Drawing.Point(163, 48);
+            this.dateTimePickerStart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTimePickerStart.Name = "dateTimePickerStart";
-            this.dateTimePickerStart.Size = new System.Drawing.Size(200, 30);
+            this.dateTimePickerStart.Size = new System.Drawing.Size(151, 30);
             this.dateTimePickerStart.TabIndex = 28;
             this.dateTimePickerStart.ValueChanged += new System.EventHandler(this.dateTimePickerStart_ValueChanged);
             // 
@@ -96,7 +99,8 @@ namespace PersonalTracking
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(12, 59);
+            this.label9.Location = new System.Drawing.Point(9, 48);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(116, 25);
             this.label9.TabIndex = 27;
@@ -105,17 +109,19 @@ namespace PersonalTracking
             // textBoxDias
             // 
             this.textBoxDias.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxDias.Location = new System.Drawing.Point(217, 141);
+            this.textBoxDias.Location = new System.Drawing.Point(163, 115);
+            this.textBoxDias.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxDias.Name = "textBoxDias";
             this.textBoxDias.ReadOnly = true;
-            this.textBoxDias.Size = new System.Drawing.Size(200, 30);
+            this.textBoxDias.Size = new System.Drawing.Size(151, 30);
             this.textBoxDias.TabIndex = 32;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 144);
+            this.label2.Location = new System.Drawing.Point(9, 117);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(155, 25);
             this.label2.TabIndex = 31;
@@ -124,17 +130,19 @@ namespace PersonalTracking
             // textBoxMotivos
             // 
             this.textBoxMotivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxMotivos.Location = new System.Drawing.Point(217, 177);
+            this.textBoxMotivos.Location = new System.Drawing.Point(163, 144);
+            this.textBoxMotivos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxMotivos.Multiline = true;
             this.textBoxMotivos.Name = "textBoxMotivos";
-            this.textBoxMotivos.Size = new System.Drawing.Size(571, 197);
+            this.textBoxMotivos.Size = new System.Drawing.Size(429, 161);
             this.textBoxMotivos.TabIndex = 34;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 180);
+            this.label3.Location = new System.Drawing.Point(9, 146);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(160, 25);
             this.label3.TabIndex = 33;
@@ -143,9 +151,10 @@ namespace PersonalTracking
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(653, 380);
+            this.btnExit.Location = new System.Drawing.Point(490, 309);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(135, 49);
+            this.btnExit.Size = new System.Drawing.Size(101, 40);
             this.btnExit.TabIndex = 39;
             this.btnExit.Text = "Salir";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -154,9 +163,10 @@ namespace PersonalTracking
             // btnCrear
             // 
             this.btnCrear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCrear.Location = new System.Drawing.Point(217, 380);
+            this.btnCrear.Location = new System.Drawing.Point(163, 309);
+            this.btnCrear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCrear.Name = "btnCrear";
-            this.btnCrear.Size = new System.Drawing.Size(137, 49);
+            this.btnCrear.Size = new System.Drawing.Size(103, 40);
             this.btnCrear.TabIndex = 38;
             this.btnCrear.Text = "Crear";
             this.btnCrear.UseVisualStyleBackColor = true;
@@ -164,9 +174,9 @@ namespace PersonalTracking
             // 
             // FrmPermission
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnCrear);
             this.Controls.Add(this.textBoxMotivos);
@@ -179,6 +189,7 @@ namespace PersonalTracking
             this.Controls.Add(this.label9);
             this.Controls.Add(this.textBoxUserNo);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmPermission";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Solicitud permisos";

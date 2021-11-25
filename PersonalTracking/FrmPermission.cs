@@ -8,36 +8,46 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DAL;
+using DAL.DTO;
 using BLL;
 
 namespace PersonalTracking
 {
     public partial class FrmPermission : Form
     {
+        #region Variables y Objetos
+            public PermissionDetailDTO detailDto = new PermissionDetailDTO();
+
+            TimeSpan PermissionDay;
+            public bool isUdpate= false;
+        #endregion
         public FrmPermission()
         {
             InitializeComponent();
         }
-
-        private void label1_Click(object sender, EventArgs e)
+        private void FrmPermission_Load(object sender, EventArgs e)
         {
-
+            if (isUdpate)
+            {
+                btnCrear.Text = "Actualizar";
+                dateTimePickerStart.Value = detailDto.StartDate.Value;
+                dateTimePickerFinish.Value = detailDto.EndDate.Value;
+                textBoxDias.Text = detailDto.PermissionAmount.ToString();
+                textBoxMotivos.Text = detailDto.Motivo.ToString();
+                textBoxUserNo.Text = detailDto.UserNo.ToString();
+            }
+            textBoxUserNo.Text = UserStatic.UserNo.ToString();
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
 
-        }
+
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        TimeSpan PermissionDay;
-        private void FrmPermission_Load(object sender, EventArgs e)
-        {
-            textBoxUserNo.Text = UserStatic.UserNo.ToString();
-        }
+        
+        
 
         private void dateTimePickerStart_ValueChanged(object sender, EventArgs e)
         {
@@ -62,13 +72,33 @@ namespace PersonalTracking
             else
             {
                 PERMISSION permission = new PERMISSION();
-                permission.ID_Employee = UserStatic.EmployeeID;
-                permission.PermissionState = 1;
-                permission.PermissionStartDate = dateTimePickerStart.Value.Date;
-                permission.PermissionEndDate = dateTimePickerFinish.Value.Date;
-                permission.PermissionDay = Convert.ToInt32(textBoxDias.Text);
-                permission.PermissionExplanation = textBoxMotivos.Text;
-                PermissionBLL.AddPermision(permission);
+                if (!isUdpate)
+                {
+                    permission.ID_Employee = UserStatic.EmployeeID;
+                    permission.PermissionState = 1;
+                    permission.PermissionStartDate = dateTimePickerStart.Value.Date;
+                    permission.PermissionEndDate = dateTimePickerFinish.Value.Date;
+                    permission.PermissionDay = Convert.ToInt32(textBoxDias.Text);
+                    permission.PermissionExplanation = textBoxMotivos.Text;
+                    PermissionBLL.AddPermision(permission);
+                }
+                else if (isUdpate)
+                {
+                    DialogResult result = MessageBox.Show("Esta seguro de que quiere actualizar", "Warning", MessageBoxButtons.YesNo);
+                    if(result== DialogResult.Yes)
+                    {
+                        permission.ID_Permission = detailDto.PermissionID;
+                        permission.PermissionExplanation = textBoxMotivos.Text;
+                        permission.PermissionStartDate = dateTimePickerStart.Value;
+                        permission.PermissionEndDate = dateTimePickerFinish.Value;
+                        permission.PermissionDay = Convert.ToInt32(textBoxDias.Text);
+                        PermissionBLL.UpdatePermission(permission);
+
+                        MessageBox.Show("Actualizacion correcta");
+                        this.Close();
+                    }
+                }
+                
 
                 MessageBox.Show("Permiso añadido con exito");
                 permission = new PERMISSION();
