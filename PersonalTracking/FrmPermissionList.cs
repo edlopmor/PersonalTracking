@@ -14,40 +14,13 @@ namespace PersonalTracking
 {
     public partial class FrmPermissionList : Form
     {
-        public FrmPermissionList()
-        {
-            InitializeComponent();
-        }
+        #region Variables y Objetos
+        PermissionDTO dto = new PermissionDTO();
+        PermissionDetailDTO detailDto = new PermissionDetailDTO();
+        private bool comboFull;
+        #endregion
 
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnCerrar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void textBoxDias_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = General.isNumber(e);
-        }
-
-        private void textBoxUserNo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = General.isNumber(e);
-        }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            FrmPermission frm = new FrmPermission();
-            this.Hide();
-            frm.ShowDialog();
-            this.Visible = true;
-            fillAllData();
-            cleanFilters();
-        }
+        #region Metodos Auxiliares
         void fillAllData()
         {
             dto = PermissionBLL.GetAll();
@@ -72,11 +45,37 @@ namespace PersonalTracking
 
 
         }
-        PermissionDTO dto = new PermissionDTO();
-        private bool comboFull;
+        private void cleanFilters()
+        {
+            textBoxUserNo.Clear();
+            textBoxNombre.Clear();
+            textBoxApellido.Clear();
+            comboFull = false;
+            comboBoxDepartment.SelectedIndex = -1;
+            comboBoxPosition.DataSource = dto.Positions;
+            comboBoxPosition.SelectedIndex = -1;
+            comboBoxState.DataSource = dto.States;
+            comboBoxState.SelectedIndex = -1;
+            comboFull = true;
+            rbFinihsDate.Checked = false;
+            rbStartDate.Checked = false;
+
+            dataGridView1.DataSource = dto.Permissions;
+        }
+
+        #endregion
+
+        public FrmPermissionList()
+        {
+            InitializeComponent();
+        }
 
         private void FrmPermissionList_Load(object sender, EventArgs e)
         {
+            //Header 0-EmployeeId 1-UserNo 2-Name 3-Surname 4-DepartmentId
+            //5-DeparmentName 6-PositionId 7-PositionName 8-StartDate 9-EndDate 10-PermissionAmount
+            //11-StateName 12-StateId 13-StatePermision 14-Motivo 15-PermissionID
+
             fillAllData();
             dataGridView1.Columns[0].Visible = false;
             dataGridView1.Columns[1].HeaderText = "Numero usuario";
@@ -91,14 +90,51 @@ namespace PersonalTracking
             dataGridView1.Columns[8].HeaderText = "Dia inicial";
             dataGridView1.Columns[9].HeaderText = "Dia final";
             dataGridView1.Columns[10].HeaderText = "Cantidad de dias";
-            dataGridView1.Columns[11].Visible = false;
+            dataGridView1.Columns[11].HeaderText = "Situacion del permiso";  
             dataGridView1.Columns[12].Visible = false;
+            
             dataGridView1.Columns[13].Visible = false;
-
             dataGridView1.Columns[14].HeaderText = "Motivo";
+            dataGridView1.Columns[15].Visible = false;
 
         }
 
+        private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            detailDto.PermissionID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[15].Value);
+            detailDto.StartDate = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[8].Value);
+            detailDto.EndDate = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[9].Value);
+            detailDto.Motivo = dataGridView1.Rows[e.RowIndex].Cells[14].Value.ToString();
+            detailDto.UserNo = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[1].Value);
+            detailDto.StatePermission = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[13].Value);
+            detailDto.PermissionAmount = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[10].Value);
+
+            
+        }
+
+        #region TextBoxes
+        private void textBoxDias_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = General.isNumber(e);
+        }
+
+        private void textBoxUserNo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = General.isNumber(e);
+        }
+        #endregion
+
+        #region Operaciones con botones
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            FrmPermission frm = new FrmPermission();
+            this.Hide();
+            frm.ShowDialog();
+            this.Visible = true;
+            fillAllData();
+            cleanFilters();
+        }
+             
         private void btnSearch_Click(object sender, EventArgs e)
         {
             List<PermissionDetailDTO> list = dto.Permissions;
@@ -120,14 +156,13 @@ namespace PersonalTracking
             //Filtramos por el comboPosition
             if (comboBoxDepartment.SelectedIndex != -1)
                 list = list.Where(x => x.PositionID == Convert.ToInt32(comboBoxPosition.SelectedValue)).ToList();
+            //Filtro de fecha para comprobar. 
             if (rbStartDate.Checked)
-                list = list.Where(x => x.StartDate < Convert.ToDateTime(dateTimePickerFinish.Value) &&
-                x.StartDate > Convert.ToDateTime(dateTimePickerStart.Value)).ToList();
-            else if (rbFinihsDate.Checked)
-            {
-                list = list.Where(x => x.EndDate < Convert.ToDateTime(dateTimePickerFinish.Value) &&
-                                x.StartDate > Convert.ToDateTime(dateTimePickerStart.Value)).ToList();
-            }
+                list = list.Where(x => x.StartDate > Convert.ToDateTime(dateTimePickerStart.Value) &&
+                x.StartDate < Convert.ToDateTime(dateTimePickerFinish.Value)).ToList();
+            if (rbFinihsDate.Checked)
+                list = list.Where(x => x.EndDate < Convert.ToDateTime(dateTimePickerStart.Value) &&
+                x.EndDate > Convert.ToDateTime(dateTimePickerFinish.Value)).ToList();
             if (comboBoxState.SelectedIndex != -1)
                 list = list.Where(x => x.StateId == Convert.ToInt32(comboBoxState.SelectedValue)).ToList();
 
@@ -139,22 +174,50 @@ namespace PersonalTracking
         {
             cleanFilters();
         }
-        private void cleanFilters()
+             
+        private void btnActualizar_Click(object sender, EventArgs e)
         {
-            textBoxUserNo.Clear();
-            textBoxNombre.Clear();
-            textBoxApellido.Clear();
-            comboFull = false;
-            comboBoxDepartment.SelectedIndex = -1;
-            comboBoxPosition.DataSource = dto.Positions;
-            comboBoxPosition.SelectedIndex = -1;
-            comboBoxState.DataSource = dto.States;
-            comboBoxState.SelectedIndex = -1;
-            comboFull = true;
-            rbFinihsDate.Checked = false;
-            rbStartDate.Checked = false;
+            if(detailDto.PermissionID == 0)
+            {
+                MessageBox.Show("Selecciona un permiso para actualizar");
+            }
+            else
+            {
+                FrmPermission frm = new FrmPermission();
+                //Enviamos los datos al nuevo formulario.
+                frm.isUdpate = true;
+                frm.detailDto = detailDto;
+                this.Hide();
 
-            dataGridView1.DataSource = dto.Permissions;
+                frm.ShowDialog();
+                this.Visible = true;
+                fillAllData();
+                cleanFilters();
+            }
+                                 
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        #endregion
+
+        private void buttonAprove_Click(object sender, EventArgs e)
+        {
+            PermissionBLL.UpdatePermission(detailDto.PermissionID, PermisionStates.Approved);
+            MessageBox.Show("Permiso aprobado");
+            fillAllData();
+            cleanFilters();
+        }
+
+        private void buttonDisaprove_Click(object sender, EventArgs e)
+        {
+            PermissionBLL.UpdatePermission(detailDto.PermissionID, PermisionStates.Disaproved);
+            MessageBox.Show("Permiso denegado");
+            fillAllData();
+            cleanFilters();
         }
     }
 }

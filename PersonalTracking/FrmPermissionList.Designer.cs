@@ -31,6 +31,8 @@ namespace PersonalTracking
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.comboBoxState = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.textBoxDias = new System.Windows.Forms.TextBox();
@@ -62,8 +64,6 @@ namespace PersonalTracking
             this.btnBorrar = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.comboBoxState = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -78,8 +78,9 @@ namespace PersonalTracking
             this.panel1.Controls.Add(this.panelAdmin);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1247, 208);
+            this.panel1.Size = new System.Drawing.Size(935, 169);
             this.panel1.TabIndex = 0;
             // 
             // panel4
@@ -97,17 +98,40 @@ namespace PersonalTracking
             this.panel4.Controls.Add(this.label9);
             this.panel4.Controls.Add(this.label2);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(365, 0);
+            this.panel4.Location = new System.Drawing.Point(274, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(882, 208);
+            this.panel4.Size = new System.Drawing.Size(661, 169);
             this.panel4.TabIndex = 1;
+            // 
+            // comboBoxState
+            // 
+            this.comboBoxState.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxState.FormattingEnabled = true;
+            this.comboBoxState.Location = new System.Drawing.Point(152, 127);
+            this.comboBoxState.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxState.Name = "comboBoxState";
+            this.comboBoxState.Size = new System.Drawing.Size(262, 33);
+            this.comboBoxState.TabIndex = 38;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(11, 132);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(73, 25);
+            this.label10.TabIndex = 37;
+            this.label10.Text = "Estado";
             // 
             // btnClear
             // 
             this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(779, 142);
+            this.btnClear.Location = new System.Drawing.Point(535, 127);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(2);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(91, 43);
+            this.btnClear.Size = new System.Drawing.Size(117, 35);
             this.btnClear.TabIndex = 36;
             this.btnClear.Text = "Limpiar";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -116,9 +140,10 @@ namespace PersonalTracking
             // btnSearch
             // 
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(670, 142);
+            this.btnSearch.Location = new System.Drawing.Point(432, 127);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(86, 43);
+            this.btnSearch.Size = new System.Drawing.Size(99, 35);
             this.btnSearch.TabIndex = 35;
             this.btnSearch.Text = "Buscar";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -127,9 +152,10 @@ namespace PersonalTracking
             // textBoxDias
             // 
             this.textBoxDias.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxDias.Location = new System.Drawing.Point(202, 120);
+            this.textBoxDias.Location = new System.Drawing.Point(152, 98);
+            this.textBoxDias.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxDias.Name = "textBoxDias";
-            this.textBoxDias.Size = new System.Drawing.Size(90, 30);
+            this.textBoxDias.Size = new System.Drawing.Size(68, 30);
             this.textBoxDias.TabIndex = 34;
             this.textBoxDias.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDias_KeyPress);
             // 
@@ -137,20 +163,22 @@ namespace PersonalTracking
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(15, 125);
+            this.label6.Location = new System.Drawing.Point(11, 102);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(159, 25);
             this.label6.TabIndex = 33;
             this.label6.Text = "Cantidad de dias";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.rbFinihsDate);
             this.groupBox1.Controls.Add(this.rbStartDate);
-            this.groupBox1.Location = new System.Drawing.Point(670, 20);
+            this.groupBox1.Location = new System.Drawing.Point(502, 16);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 100);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Size = new System.Drawing.Size(150, 81);
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
             // 
@@ -158,7 +186,8 @@ namespace PersonalTracking
             // 
             this.rbFinihsDate.AutoSize = true;
             this.rbFinihsDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbFinihsDate.Location = new System.Drawing.Point(38, 57);
+            this.rbFinihsDate.Location = new System.Drawing.Point(28, 46);
+            this.rbFinihsDate.Margin = new System.Windows.Forms.Padding(2);
             this.rbFinihsDate.Name = "rbFinihsDate";
             this.rbFinihsDate.Size = new System.Drawing.Size(75, 29);
             this.rbFinihsDate.TabIndex = 1;
@@ -170,7 +199,8 @@ namespace PersonalTracking
             // 
             this.rbStartDate.AutoSize = true;
             this.rbStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbStartDate.Location = new System.Drawing.Point(35, 21);
+            this.rbStartDate.Location = new System.Drawing.Point(26, 17);
+            this.rbStartDate.Margin = new System.Windows.Forms.Padding(2);
             this.rbStartDate.Name = "rbStartDate";
             this.rbStartDate.Size = new System.Drawing.Size(78, 29);
             this.rbStartDate.TabIndex = 0;
@@ -181,16 +211,19 @@ namespace PersonalTracking
             // dateTimePickerFinish
             // 
             this.dateTimePickerFinish.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerFinish.Location = new System.Drawing.Point(202, 77);
+            this.dateTimePickerFinish.Location = new System.Drawing.Point(152, 63);
+            this.dateTimePickerFinish.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerFinish.Name = "dateTimePickerFinish";
-            this.dateTimePickerFinish.Size = new System.Drawing.Size(348, 30);
+            this.dateTimePickerFinish.Size = new System.Drawing.Size(262, 30);
             this.dateTimePickerFinish.TabIndex = 31;
+            this.dateTimePickerFinish.Value = new System.DateTime(2021, 11, 25, 0, 0, 0, 0);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(15, 84);
+            this.label5.Location = new System.Drawing.Point(11, 68);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(107, 25);
             this.label5.TabIndex = 30;
@@ -199,16 +232,19 @@ namespace PersonalTracking
             // dateTimePickerStart
             // 
             this.dateTimePickerStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerStart.Location = new System.Drawing.Point(202, 41);
+            this.dateTimePickerStart.Location = new System.Drawing.Point(152, 33);
+            this.dateTimePickerStart.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerStart.Name = "dateTimePickerStart";
-            this.dateTimePickerStart.Size = new System.Drawing.Size(348, 30);
+            this.dateTimePickerStart.Size = new System.Drawing.Size(262, 30);
             this.dateTimePickerStart.TabIndex = 29;
+            this.dateTimePickerStart.Value = new System.DateTime(2021, 11, 25, 0, 0, 0, 0);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(15, 48);
+            this.label9.Location = new System.Drawing.Point(11, 39);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(116, 25);
             this.label9.TabIndex = 28;
@@ -218,7 +254,8 @@ namespace PersonalTracking
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(15, 9);
+            this.label2.Location = new System.Drawing.Point(11, 7);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(172, 25);
             this.label2.TabIndex = 27;
@@ -238,24 +275,27 @@ namespace PersonalTracking
             this.panelAdmin.Controls.Add(this.label3);
             this.panelAdmin.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelAdmin.Location = new System.Drawing.Point(0, 0);
+            this.panelAdmin.Margin = new System.Windows.Forms.Padding(2);
             this.panelAdmin.Name = "panelAdmin";
-            this.panelAdmin.Size = new System.Drawing.Size(365, 208);
+            this.panelAdmin.Size = new System.Drawing.Size(274, 169);
             this.panelAdmin.TabIndex = 0;
             // 
             // comboBoxPosition
             // 
             this.comboBoxPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxPosition.FormattingEnabled = true;
-            this.comboBoxPosition.Location = new System.Drawing.Point(151, 163);
+            this.comboBoxPosition.Location = new System.Drawing.Point(113, 132);
+            this.comboBoxPosition.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxPosition.Name = "comboBoxPosition";
-            this.comboBoxPosition.Size = new System.Drawing.Size(208, 33);
+            this.comboBoxPosition.Size = new System.Drawing.Size(157, 33);
             this.comboBoxPosition.TabIndex = 34;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(12, 170);
+            this.label7.Location = new System.Drawing.Point(9, 138);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(73, 25);
             this.label7.TabIndex = 33;
@@ -265,16 +305,18 @@ namespace PersonalTracking
             // 
             this.comboBoxDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxDepartment.FormattingEnabled = true;
-            this.comboBoxDepartment.Location = new System.Drawing.Point(151, 125);
+            this.comboBoxDepartment.Location = new System.Drawing.Point(113, 102);
+            this.comboBoxDepartment.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxDepartment.Name = "comboBoxDepartment";
-            this.comboBoxDepartment.Size = new System.Drawing.Size(208, 33);
+            this.comboBoxDepartment.Size = new System.Drawing.Size(157, 33);
             this.comboBoxDepartment.TabIndex = 32;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(12, 132);
+            this.label8.Location = new System.Drawing.Point(9, 107);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(135, 25);
             this.label8.TabIndex = 31;
@@ -283,9 +325,10 @@ namespace PersonalTracking
             // textBoxUserNo
             // 
             this.textBoxUserNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxUserNo.Location = new System.Drawing.Point(151, 17);
+            this.textBoxUserNo.Location = new System.Drawing.Point(113, 14);
+            this.textBoxUserNo.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxUserNo.Name = "textBoxUserNo";
-            this.textBoxUserNo.Size = new System.Drawing.Size(208, 30);
+            this.textBoxUserNo.Size = new System.Drawing.Size(157, 30);
             this.textBoxUserNo.TabIndex = 30;
             this.textBoxUserNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxUserNo_KeyPress);
             // 
@@ -293,7 +336,8 @@ namespace PersonalTracking
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 20);
+            this.label1.Location = new System.Drawing.Point(9, 16);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 25);
             this.label1.TabIndex = 29;
@@ -302,16 +346,18 @@ namespace PersonalTracking
             // textBoxApellido
             // 
             this.textBoxApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxApellido.Location = new System.Drawing.Point(151, 89);
+            this.textBoxApellido.Location = new System.Drawing.Point(113, 72);
+            this.textBoxApellido.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxApellido.Name = "textBoxApellido";
-            this.textBoxApellido.Size = new System.Drawing.Size(208, 30);
+            this.textBoxApellido.Size = new System.Drawing.Size(157, 30);
             this.textBoxApellido.TabIndex = 28;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 88);
+            this.label4.Location = new System.Drawing.Point(9, 72);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(82, 25);
             this.label4.TabIndex = 27;
@@ -320,16 +366,18 @@ namespace PersonalTracking
             // textBoxNombre
             // 
             this.textBoxNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxNombre.Location = new System.Drawing.Point(151, 53);
+            this.textBoxNombre.Location = new System.Drawing.Point(113, 43);
+            this.textBoxNombre.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxNombre.Name = "textBoxNombre";
-            this.textBoxNombre.Size = new System.Drawing.Size(208, 30);
+            this.textBoxNombre.Size = new System.Drawing.Size(157, 30);
             this.textBoxNombre.TabIndex = 26;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 52);
+            this.label3.Location = new System.Drawing.Point(9, 42);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(81, 25);
             this.label3.TabIndex = 25;
@@ -340,12 +388,14 @@ namespace PersonalTracking
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 208);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 169);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1247, 599);
+            this.dataGridView1.Size = new System.Drawing.Size(935, 487);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
             // 
             // panel2
             // 
@@ -356,37 +406,43 @@ namespace PersonalTracking
             this.panel2.Controls.Add(this.btnActualizar);
             this.panel2.Controls.Add(this.btnAdd);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 710);
+            this.panel2.Location = new System.Drawing.Point(0, 577);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1247, 97);
+            this.panel2.Size = new System.Drawing.Size(935, 79);
             this.panel2.TabIndex = 3;
             // 
             // buttonDisaprove
             // 
             this.buttonDisaprove.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDisaprove.Location = new System.Drawing.Point(10, 48);
+            this.buttonDisaprove.Location = new System.Drawing.Point(8, 39);
+            this.buttonDisaprove.Margin = new System.Windows.Forms.Padding(2);
             this.buttonDisaprove.Name = "buttonDisaprove";
-            this.buttonDisaprove.Size = new System.Drawing.Size(160, 49);
+            this.buttonDisaprove.Size = new System.Drawing.Size(120, 40);
             this.buttonDisaprove.TabIndex = 17;
             this.buttonDisaprove.Text = "Denegar";
             this.buttonDisaprove.UseVisualStyleBackColor = true;
+            this.buttonDisaprove.Click += new System.EventHandler(this.buttonDisaprove_Click);
             // 
             // buttonAprove
             // 
             this.buttonAprove.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAprove.Location = new System.Drawing.Point(10, 0);
+            this.buttonAprove.Location = new System.Drawing.Point(8, 0);
+            this.buttonAprove.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAprove.Name = "buttonAprove";
-            this.buttonAprove.Size = new System.Drawing.Size(160, 49);
+            this.buttonAprove.Size = new System.Drawing.Size(120, 40);
             this.buttonAprove.TabIndex = 16;
             this.buttonAprove.Text = "Aprobar";
             this.buttonAprove.UseVisualStyleBackColor = true;
+            this.buttonAprove.Click += new System.EventHandler(this.buttonAprove_Click);
             // 
             // btnCerrar
             // 
             this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrar.Location = new System.Drawing.Point(848, 4);
+            this.btnCerrar.Location = new System.Drawing.Point(813, 4);
+            this.btnCerrar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(160, 90);
+            this.btnCerrar.Size = new System.Drawing.Size(120, 73);
             this.btnCerrar.TabIndex = 15;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = true;
@@ -395,9 +451,10 @@ namespace PersonalTracking
             // btnBorrar
             // 
             this.btnBorrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBorrar.Location = new System.Drawing.Point(508, 4);
+            this.btnBorrar.Location = new System.Drawing.Point(381, 3);
+            this.btnBorrar.Margin = new System.Windows.Forms.Padding(2);
             this.btnBorrar.Name = "btnBorrar";
-            this.btnBorrar.Size = new System.Drawing.Size(160, 90);
+            this.btnBorrar.Size = new System.Drawing.Size(120, 73);
             this.btnBorrar.TabIndex = 14;
             this.btnBorrar.Text = "Borrar";
             this.btnBorrar.UseVisualStyleBackColor = true;
@@ -405,51 +462,36 @@ namespace PersonalTracking
             // btnActualizar
             // 
             this.btnActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizar.Location = new System.Drawing.Point(342, 4);
+            this.btnActualizar.Location = new System.Drawing.Point(256, 3);
+            this.btnActualizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(160, 90);
+            this.btnActualizar.Size = new System.Drawing.Size(120, 73);
             this.btnActualizar.TabIndex = 13;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(176, 4);
+            this.btnAdd.Location = new System.Drawing.Point(132, 3);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(160, 90);
+            this.btnAdd.Size = new System.Drawing.Size(120, 73);
             this.btnAdd.TabIndex = 12;
             this.btnAdd.Text = "Añadir";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // comboBoxState
-            // 
-            this.comboBoxState.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxState.FormattingEnabled = true;
-            this.comboBoxState.Location = new System.Drawing.Point(202, 156);
-            this.comboBoxState.Name = "comboBoxState";
-            this.comboBoxState.Size = new System.Drawing.Size(348, 33);
-            this.comboBoxState.TabIndex = 38;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(15, 163);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(91, 31);
-            this.label10.TabIndex = 37;
-            this.label10.Text = "Estado";
-            // 
             // FrmPermissionList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1247, 807);
+            this.ClientSize = new System.Drawing.Size(935, 656);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmPermissionList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista de permisos";
