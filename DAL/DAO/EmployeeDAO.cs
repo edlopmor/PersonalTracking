@@ -72,6 +72,21 @@ namespace DAL.DAO
             return employeesList;
         }
 
+        public static void UpdateEmployee(int iD_Employee, int amount)
+        {
+            try
+            {
+                EMPLOYEE employee = db.EMPLOYEE.First(x => x.ID_Employee == iD_Employee);
+                employee.Salary = amount;
+                db.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public static List<EMPLOYEE> GetEmployees(int v, string text)
         {
             try
