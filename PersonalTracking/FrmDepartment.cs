@@ -33,25 +33,49 @@ namespace PersonalTracking
 
         private void BtnCrear_Click(object sender, EventArgs e)
         {
+            DEPARTMENT department = new DEPARTMENT();
             if (txtBoxDepartment.Text.Trim() == "")
             {
                 MessageBox.Show("Por favor rellena el nombre del departamento");
             }
+            else if (isUpdate)
+            {
+                DialogResult result = MessageBox.Show("Quiere actualizar el departamento", "Warning", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    department.ID = updateDepartment.ID;
+                    department.DepartmentName = txtBoxDepartment.Text;                   
+                    BLL.DepartmentBLL.UpdateDepartment(department);
+                    MessageBox.Show("Departamento actualizado");
+                    this.Close();
+                }               
+            }
             else
             {
-                DEPARTMENT department = new DEPARTMENT();
+                
                 department.DepartmentName = txtBoxDepartment.Text;
                 BLL.DepartmentBLL.AddDepartment(department);
                 MessageBox.Show("Departamento añadido con exito");
                 txtBoxDepartment.Clear();
             }
-            
+            department = new DEPARTMENT();
 
         }
 
         private void lblDepartment_Click(object sender, EventArgs e)
         {
 
+        }
+        public bool isUpdate = false;
+        public DEPARTMENT updateDepartment = new DEPARTMENT();
+        private void FrmDepartment_Load(object sender, EventArgs e)
+        {
+            if (isUpdate)
+            {
+                btnCrear.Text = "Actualizar";
+                txtBoxDepartment.Text = updateDepartment.DepartmentName;                
+            }
+            
         }
     }
         

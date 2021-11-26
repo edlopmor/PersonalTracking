@@ -41,7 +41,7 @@ namespace PersonalTracking
             this.lblDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDepartment.Location = new System.Drawing.Point(12, 35);
             this.lblDepartment.Name = "lblDepartment";
-            this.lblDepartment.Size = new System.Drawing.Size(155, 31);
+            this.lblDepartment.Size = new System.Drawing.Size(124, 25);
             this.lblDepartment.TabIndex = 0;
             this.lblDepartment.Text = "Departmento";
             // 
@@ -88,6 +88,7 @@ namespace PersonalTracking
             this.Name = "FrmDepartment";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Crear departamento";
+            this.Load += new System.EventHandler(this.FrmDepartment_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
