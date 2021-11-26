@@ -7,40 +7,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-using DAL;
-using DAL.DTO;
 using BLL;
+using DAL.DTO;
+
 
 namespace PersonalTracking
 {
     public partial class FrmTaskList : Form
     {
-        public FrmTaskList()
-        {
-            InitializeComponent();
-        }
+        #region Variables y objetos
+        TaskDTO dto = new TaskDTO();       
+        TaskDetailDTO updateTask = new TaskDetailDTO();
+        public bool isUdpdate = false; 
 
-        private void BtnAñadir_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ButtonAprove_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BtnCerrar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-        TaskDTO dto = new TaskDTO();
         private bool comboFull;
+        #endregion
+
+        #region Metodos Auxiliares
+
         private void FillAlData()
         {
             dto = TaskBLL.GetAll();
-            dataGridView1.DataSource = dto.Tasks;
+            dataGridViewTareas.DataSource = dto.Tasks;
 
             comboFull = false;
             comboBoxDepartment.DataSource = dto.Departments;
@@ -54,40 +42,21 @@ namespace PersonalTracking
             comboBoxPosition.SelectedIndex = -1;
             comboFull = true;
         }
-        private void FrmTaskList_Load(object sender, EventArgs e)
+
+        private void cleanFilters()
         {
-            FillAlData();
-
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].HeaderText = "Numero usuario";
-            dataGridView1.Columns[2].HeaderText = "Nombre";
-            dataGridView1.Columns[3].HeaderText = "Apellido";
-            //Deparment ID
-            dataGridView1.Columns[4].Visible = false;
-            dataGridView1.Columns[5].HeaderText = "Nombre departamento";
-            //Position ID
-            dataGridView1.Columns[6].Visible = false;
-            dataGridView1.Columns[7].Visible = false;
-            dataGridView1.Columns[8].Visible = false;
-            dataGridView1.Columns[9].Visible = false;
-            dataGridView1.Columns[10].Visible = false;
-            dataGridView1.Columns[11].HeaderText = "Titulo tarea";
-            dataGridView1.Columns[12].HeaderText = "Estado tarea";
-            dataGridView1.Columns[13].HeaderText = "Fecha inicial";
-            dataGridView1.Columns[14].Visible = false;
-
-
-        }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            FrmTask frm = new FrmTask();
-            this.Hide();
-            frm.ShowDialog();
-            this.Visible = true;
-
-            FillAlData();
-            cleanFilters();
+            textBoxUserNo.Clear();
+            textBoxNombre.Clear();
+            textBoxApellido.Clear();
+            comboFull = false;
+            comboBoxDepartment.SelectedIndex = -1;
+            comboBoxPosition.DataSource = dto.Positions;
+            comboBoxPosition.SelectedIndex = -1;
+            comboFull = true;
+            rbFinihsDate.Checked = false;
+            rbStartDate.Checked = false;
+            comboBoxTaskState.SelectedIndex = -1;
+            dataGridViewTareas.DataSource = dto.Tasks;
         }
 
         private void comboBoxDepartment_SelectedIndexChanged(object sender, EventArgs e)
@@ -96,6 +65,49 @@ namespace PersonalTracking
             {
                 comboBoxPosition.DataSource = dto.Positions.Where(x => x.Deparment_ID == Convert.ToInt32(comboBoxDepartment.SelectedValue)).ToList();
             }
+        }
+        #endregion
+        public FrmTaskList()
+        {
+            InitializeComponent();
+        }
+
+        private void FrmTaskList_Load(object sender, EventArgs e)
+        {
+            //Header 0-EmployeeId 1-UserNo 2-Name 3-SurName 4-DepartmentName 5-PositionName 6-DepartmentId 7-PositionId 8-TaskId
+            //9-TaskStateId 10-TituloTarea 11-ContenidoTarea 12-TaskStateName 13-TaskStarDate 14-TasDeliveryDate
+            FillAlData();
+
+            dataGridViewTareas.Columns[0].Visible = false;
+            dataGridViewTareas.Columns[1].HeaderText = "Numero usuario";
+            dataGridViewTareas.Columns[2].HeaderText = "Nombre";
+            dataGridViewTareas.Columns[3].HeaderText = "Apellido";
+
+            dataGridViewTareas.Columns[4].HeaderText = "Nombre departamento";
+            dataGridViewTareas.Columns[5].HeaderText = "Puesto";
+            //Position ID
+            dataGridViewTareas.Columns[6].Visible = false;
+            dataGridViewTareas.Columns[7].Visible = false;
+            dataGridViewTareas.Columns[8].Visible = false;
+            dataGridViewTareas.Columns[9].Visible = false;
+            dataGridViewTareas.Columns[10].HeaderText = "Titulo tarea";
+            dataGridViewTareas.Columns[12].HeaderText = "Estado tarea";
+            dataGridViewTareas.Columns[13].HeaderText = "Fecha inicial";
+            dataGridViewTareas.Columns[14].HeaderText = "Fecha final";
+
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            FrmTask frm = new FrmTask();    
+            frm.ShowDialog();           
+            FillAlData();
+            cleanFilters();
+            this.Close();
+        }
+        private void ButtonAprove_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -126,27 +138,61 @@ namespace PersonalTracking
                 list = list.Where(x => x.TaskStateID == Convert.ToInt32(comboBoxTaskState.SelectedValue)).ToList();
 
 
-            dataGridView1.DataSource = list;
+            dataGridViewTareas.DataSource = list;
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
             cleanFilters();
         }
-        private void cleanFilters()
+
+        private void BtnCerrar_Click(object sender, EventArgs e)
         {
-            textBoxUserNo.Clear();
-            textBoxNombre.Clear();
-            textBoxApellido.Clear();
-            comboFull = false;
-            comboBoxDepartment.SelectedIndex = -1;
-            comboBoxPosition.DataSource = dto.Positions;
-            comboBoxPosition.SelectedIndex = -1;
-            comboFull = true;
-            rbFinihsDate.Checked = false;
-            rbStartDate.Checked = false;
-            comboBoxTaskState.SelectedIndex = -1;
-            dataGridView1.DataSource = dto.Employees;
+            this.Close();
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            if (updateTask.TaskID == 0)
+            {
+                MessageBox.Show("Por favor seleccione una tarea");
+            }
+            else
+            {
+                FrmTask frm = new FrmTask();
+                frm.isUdpdate = true;
+                frm.taskUpdate = updateTask;
+                this.Hide();
+                frm.ShowDialog();
+                this.Visible = true;
+                FillAlData();
+                cleanFilters();
+                
+            }
+
+        }
+
+        private void dataGridTareas_RowEnter_1(object sender, DataGridViewCellEventArgs e)
+        {
+                //Header 0-EmployeeId 1-UserNo 2-Name 3-SurName 4-DepartmentName 5-PositionName 6-DepartmentId 7-PositionId 8-TaskId
+                //9-TaskStateId 10-TituloTarea 11-ContenidoTarea 12-TaskStateName 13-TaskStarDate 14-TasDeliveryDate
+                updateTask.EmployeeId = Convert.ToInt32(dataGridViewTareas.Rows[e.RowIndex].Cells[0].Value.ToString());                
+                updateTask.UserNo = Convert.ToInt32(dataGridViewTareas.Rows[e.RowIndex].Cells[1].Value);
+                updateTask.Name = dataGridViewTareas.Rows[e.RowIndex].Cells[2].Value.ToString();
+                updateTask.Surname = dataGridViewTareas.Rows[e.RowIndex].Cells[3].Value.ToString();
+                updateTask.DepartmentID = Convert.ToInt32(dataGridViewTareas.Rows[e.RowIndex].Cells[6].Value.ToString());
+                updateTask.PositionID = Convert.ToInt32(dataGridViewTareas.Rows[e.RowIndex].Cells[7].Value.ToString());
+                updateTask.TaskID = Convert.ToInt32(dataGridViewTareas.Rows[e.RowIndex].Cells[8].Value.ToString());
+                updateTask.TaskStateID = Convert.ToInt32(dataGridViewTareas.Rows[e.RowIndex].Cells[9].Value.ToString());
+                updateTask.Title = dataGridViewTareas.Rows[e.RowIndex].Cells[10].Value.ToString();
+                updateTask.Content = dataGridViewTareas.Rows[e.RowIndex].Cells[11].Value.ToString();                            
+                updateTask.TaskStartDate = Convert.ToDateTime(dataGridViewTareas.Rows[e.RowIndex].Cells[13].Value.ToString());
+                
+                
+            //detailDto.TaskDeliveryDate = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[14].Value.ToString());
+
+
+
         }
     }
 }

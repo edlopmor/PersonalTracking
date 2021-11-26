@@ -17,7 +17,7 @@ namespace PersonalTracking
         #region Variables y Objetos
         PermissionDTO dto = new PermissionDTO();
         PermissionDetailDTO detailDto = new PermissionDetailDTO();
-        private bool comboFull;
+        private bool comboFull = false;
         #endregion
 
         #region Metodos Auxiliares

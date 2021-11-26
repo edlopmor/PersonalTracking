@@ -54,23 +54,23 @@ namespace PersonalTracking
         private void FrmEmployeeList_Load(object sender, EventArgs e)
         {
             dto = EmployeeBLL.GetAll();
-            dataGridView1.DataSource = dto.Employees;
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].HeaderText = "Numero usuario";
-            dataGridView1.Columns[2].HeaderText = "Nombre";
-            dataGridView1.Columns[3].HeaderText = "Apellido";
+            dataGridEmployee.DataSource = dto.Employees;
+            dataGridEmployee.Columns[0].Visible = false;
+            dataGridEmployee.Columns[1].HeaderText = "Numero usuario";
+            dataGridEmployee.Columns[2].HeaderText = "Nombre";
+            dataGridEmployee.Columns[3].HeaderText = "Apellido";
             //Deparment ID
-            dataGridView1.Columns[4].Visible = false;
-            dataGridView1.Columns[5].HeaderText = "Nombre departamento";
+            dataGridEmployee.Columns[4].Visible = false;
+            dataGridEmployee.Columns[5].HeaderText = "Nombre departamento";
             //Position ID
-            dataGridView1.Columns[6].Visible = false;
-            dataGridView1.Columns[7].HeaderText = "Nombre de puesto";
-            dataGridView1.Columns[8].HeaderText = "Salario";
-            dataGridView1.Columns[9].Visible = false;
-            dataGridView1.Columns[10].Visible = false;           
-            dataGridView1.Columns[11].Visible = false;
-            dataGridView1.Columns[12].Visible = false;
-            dataGridView1.Columns[13].Visible = false;
+            dataGridEmployee.Columns[6].Visible = false;
+            dataGridEmployee.Columns[7].HeaderText = "Nombre de puesto";
+            dataGridEmployee.Columns[8].HeaderText = "Salario";
+            dataGridEmployee.Columns[9].Visible = false;
+            dataGridEmployee.Columns[10].Visible = false;           
+            dataGridEmployee.Columns[11].Visible = false;
+            dataGridEmployee.Columns[12].Visible = false;
+            dataGridEmployee.Columns[13].Visible = false;
             
 
             comboFull = false;
@@ -123,7 +123,7 @@ namespace PersonalTracking
             {
                 list = list.Where(x => x.PositionID == Convert.ToInt32(comboBoxPosition.SelectedValue)).ToList();
             }
-            dataGridView1.DataSource = list;
+            dataGridEmployee.DataSource = list;
 
         }
 
@@ -137,7 +137,7 @@ namespace PersonalTracking
             comboBoxPosition.DataSource = dto.Positions;
             comboBoxPosition.SelectedIndex = -1;
             comboFull = true;
-            dataGridView1.DataSource = dto.Employees;
+            dataGridEmployee.DataSource = dto.Employees;
         }
     }
 }
