@@ -41,8 +41,9 @@ namespace DAL.DAO
                         PositionDTO dto = new PositionDTO();
                         dto.ID = item.positionID;
                         dto.PositionName = item.positionName;
-                        dto.DepartmentName = item.departmentName;
                         dto.Deparment_ID = item.departmentID;
+                        dto.DepartmentName = item.departmentName;
+                        
 
                         positionList.Add(dto);
                     }
@@ -50,6 +51,22 @@ namespace DAL.DAO
             }
                 
             catch (Exception ex )
+            {
+
+                throw ex;
+            }
+        }
+
+        public static void PositionUpdate(POSITION position)
+        {
+            try
+            {
+                POSITION aux = db.POSITION.First(x => x.ID == position.ID);
+                aux.PositionName = position.PositionName;
+                aux.Deparment_ID = position.Deparment_ID;
+                db.SubmitChanges();
+            }
+            catch (Exception ex)
             {
 
                 throw ex;

@@ -9,32 +9,47 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
 using DAL;
+using DAL.DTO;
 
 namespace PersonalTracking
 {
     public partial class FrmPosition : Form
     {
+        public bool isUpdate = false;
+        public PositionDTO positionUpdate = new PositionDTO();
+        POSITION position = new POSITION();
+        List<DEPARTMENT> departmentsList = new List<DEPARTMENT>();
+
         public FrmPosition()
         {
             InitializeComponent();
-        }
-        List<DEPARTMENT> departmentsList = new List<DEPARTMENT>();
+        }       
         private void FrmPosition_Load(object sender, EventArgs e)
         {
             departmentsList = DepartmentBLL.GetDepartments();
+            if (isUpdate)
+            {
+                txtPosition.Text = positionUpdate.PositionName;
+                cargaComboDepartamento();
+                comboBoxDepartment.SelectedValue = positionUpdate.Deparment_ID;
+            }
+            else
+            {
+                cargaComboDepartamento();
+                comboBoxDepartment.SelectedIndex = -1;
+            }
+            
+        }
+        void cargaComboDepartamento()
+        {
             comboBoxDepartment.DataSource = departmentsList;
             comboBoxDepartment.DisplayMember = "DepartmentName";
             comboBoxDepartment.ValueMember = "ID";
-            comboBoxDepartment.SelectedIndex = -1;
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
+
             if (txtPosition.Text.Trim()=="")
             {
                 MessageBox.Show("Por favor rellena el nombre del puesto");
@@ -42,9 +57,25 @@ namespace PersonalTracking
             else if(comboBoxDepartment.SelectedIndex == -1)
             {
                 MessageBox.Show("Seleccione un departamento");
-            }else
+            }
+            else if (isUpdate)
             {
-                POSITION position = new POSITION();
+                position = new POSITION();
+                position.ID = positionUpdate.ID;
+                position.PositionName = txtPosition.Text;
+                position.Deparment_ID = Convert.ToInt32(comboBoxDepartment.SelectedValue);
+                bool control = false; 
+                if (Convert.ToInt32(comboBoxDepartment.SelectedIndex)!= positionUpdate.Deparment_ID)
+                    {
+                    control = true; 
+                    }
+                PositionBLL.UpdatePosition(position,control);
+                MessageBox.Show("Puesto Actualizado");
+                this.Close();
+            }           
+            else
+            {
+                position = new POSITION();
                 position.PositionName = txtPosition.Text;
                 position.Deparment_ID = Convert.ToInt32(comboBoxDepartment.SelectedValue);
                 BLL.PositionBLL.AddPosition(position);
@@ -53,7 +84,14 @@ namespace PersonalTracking
                 txtPosition.Clear();
                 comboBoxDepartment.SelectedIndex = -1;
 
+                position = new POSITION();
+
             }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

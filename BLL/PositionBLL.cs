@@ -21,5 +21,12 @@ namespace BLL
         {
             return PositionDAO.GetPositions();
         }
+
+        public static void UpdatePosition(POSITION position, bool control)
+        {
+            PositionDAO.PositionUpdate(position);
+            if (control) ;
+            EmployeeDAO.UpdateEmployee(position);
+        }
     }
 }
