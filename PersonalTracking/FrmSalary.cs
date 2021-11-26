@@ -26,7 +26,7 @@ namespace PersonalTracking
             this.Close();
         }
         SalaryDTO dto = new SalaryDTO();
-        private bool comboFull;
+        private bool comboFull = false;
 
         private void FrmSalary_Load(object sender, EventArgs e)
         {

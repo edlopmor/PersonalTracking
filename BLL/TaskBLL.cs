@@ -30,5 +30,10 @@ namespace BLL
 
             return taskDTO;
         }
+
+        public static void UpdateTask(TASK update)
+        {
+            TaskDAO.UpdateTask(update);
+        }
     }
 }
