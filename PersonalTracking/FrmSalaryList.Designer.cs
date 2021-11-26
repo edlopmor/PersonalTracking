@@ -59,13 +59,13 @@ namespace PersonalTracking
             this.btnBorrar = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewSalary = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panelforAdmin.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalary)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -371,6 +371,7 @@ namespace PersonalTracking
             this.btnActualizar.TabIndex = 9;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnAdd
             // 
@@ -383,23 +384,26 @@ namespace PersonalTracking
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // dataGridView1
+            // dataGridViewSalary
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 240);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(944, 336);
-            this.dataGridView1.TabIndex = 2;
+            this.dataGridViewSalary.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewSalary.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
+            this.dataGridViewSalary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSalary.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewSalary.Location = new System.Drawing.Point(0, 234);
+            this.dataGridViewSalary.Name = "dataGridViewSalary";
+            this.dataGridViewSalary.RowHeadersWidth = 51;
+            this.dataGridViewSalary.RowTemplate.Height = 24;
+            this.dataGridViewSalary.Size = new System.Drawing.Size(1002, 436);
+            this.dataGridViewSalary.TabIndex = 2;
+            this.dataGridViewSalary.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
             // 
             // FrmSalaryList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1002, 770);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewSalary);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "FrmSalaryList";
@@ -414,7 +418,7 @@ namespace PersonalTracking
             this.panelforAdmin.ResumeLayout(false);
             this.panelforAdmin.PerformLayout();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalary)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -427,7 +431,7 @@ namespace PersonalTracking
         private System.Windows.Forms.Button btnBorrar;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewSalary;
         private System.Windows.Forms.Panel panelforAdmin;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ComboBox comboBoxPosition;

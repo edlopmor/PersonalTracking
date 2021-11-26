@@ -14,31 +14,19 @@ namespace PersonalTracking
 {
     public partial class FrmSalaryList : Form
     {
-        public FrmSalaryList()
-        {
-            InitializeComponent();
-        }
-
-        private void btnCerrar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            FrmSalary frm = new FrmSalary();
-            this.Hide();
-            frm.ShowDialog();
-            this.Visible = true;
-
-            fillAllData();
-            CleanFilters();
-        }
+        #region Variables y objetos
         SalaryDTO dto = new SalaryDTO();
+        SalaryDetailDTO salaryUddate = new SalaryDetailDTO();
+
+
         private bool comboFull;
-        void fillAllData() {
+        #endregion
+
+        #region MetodosAuxiliares
+        void fillAllData()
+        {
             dto = SalaryBLL.GetALL();
-            dataGridView1.DataSource = dto.Salaries;
+            dataGridViewSalary.DataSource = dto.Salaries;
 
             comboFull = false;
             comboBoxDepartment.DataSource = dto.Deparments;
@@ -58,42 +46,85 @@ namespace PersonalTracking
             comboFull = true;
 
         }
-            
 
-        private void FrmSalaryList_Load(object sender, EventArgs e)
+        void CleanFilters()
         {
-            fillAllData();
+            textBoxUserNo.Clear();
+            textBoxNombre.Clear();
+            textBoxApellido.Clear();
+            textBoxAño.Clear();
+            textBoxSalary.Clear();
 
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].HeaderText = "Numero usuario";
-            dataGridView1.Columns[2].HeaderText = "Nombre";
-            dataGridView1.Columns[3].HeaderText = "Apellido";
-            ////Deparment ID
-            dataGridView1.Columns[4].Visible = false;
-            dataGridView1.Columns[5].Visible = false;
-            ////Position ID
-            dataGridView1.Columns[6].Visible = false;
-            dataGridView1.Columns[7].Visible = false;
-            
-            dataGridView1.Columns[8].HeaderText = "Año";
-            dataGridView1.Columns[9].HeaderText = "Mes";
-            dataGridView1.Columns[10].Visible = false;
-            dataGridView1.Columns[11].HeaderText = "Cantidad";
-            dataGridView1.Columns[12].Visible = false;
-            dataGridView1.Columns[13].HeaderText = "Cantidad anterior";
+            comboFull = false;
+            comboBoxDepartment.SelectedIndex = -1;
+            comboBoxPosition.DataSource = dto.Positions;
+            comboBoxPosition.SelectedIndex = -1;
+            comboBoxMonth.DataSource = dto.Months;
+            comboBoxMonth.SelectedIndex = -1;
 
+            comboFull = true;
 
+            rbMore.Checked = false;
+            rbEqual.Checked = false;
+            rbLess.Checked = false;
 
+            dataGridViewSalary.DataSource = dto.Salaries;
         }
 
-        private void comboBoxDepartment_SelectedIndexChanged(object sender, EventArgs e)
+        void comboBoxDepartment_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboFull)
             {
                 comboBoxPosition.DataSource = dto.Positions.Where(x => x.Deparment_ID == Convert.ToInt32(comboBoxDepartment.SelectedValue)).ToList();
             }
         }
+        #endregion
 
+
+        public FrmSalaryList()
+        {
+            InitializeComponent();
+        }
+        private void FrmSalaryList_Load(object sender, EventArgs e)
+        {
+            /* Header 0-EmployeeID 1-UserNo 2-Name 3-SurName 4-DepartmentId 5-DepartmentName 6-PositionId 7-PositionName 8-SalaryYear
+             * 9-MonthName 10MonthID 11-SalaryAmount 12-SalaryID 13-OldSalary */
+            fillAllData();
+
+            dataGridViewSalary.Columns[0].Visible = false;
+            dataGridViewSalary.Columns[1].HeaderText = "Numero usuario";
+            dataGridViewSalary.Columns[2].HeaderText = "Nombre";
+            dataGridViewSalary.Columns[3].HeaderText = "Apellido";
+            ////Deparment ID
+            dataGridViewSalary.Columns[4].Visible = false;
+            dataGridViewSalary.Columns[5].HeaderText = "Nombre departamento";
+            ////Position ID
+            dataGridViewSalary.Columns[6].Visible = false;
+            dataGridViewSalary.Columns[7].HeaderText = "Nombre puesto";
+
+            dataGridViewSalary.Columns[8].HeaderText = "Año";
+            dataGridViewSalary.Columns[9].HeaderText = "Mes";
+            dataGridViewSalary.Columns[10].Visible = false;
+            dataGridViewSalary.Columns[11].HeaderText = "Cantidad";
+            dataGridViewSalary.Columns[12].Visible = false;
+            dataGridViewSalary.Columns[13].HeaderText = "Cantidad anterior";
+
+
+
+        }
+
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            FrmSalary frm = new FrmSalary();
+            this.Hide();
+            frm.ShowDialog();
+            this.Visible = true;
+
+            fillAllData();
+            CleanFilters();
+        }
+            
         private void btnSearch_Click(object sender, EventArgs e)
         {
             List<SalaryDetailDTO> list = dto.Salaries;
@@ -126,38 +157,56 @@ namespace PersonalTracking
                     list = list.Where(x => x.SalaryAmount == Convert.ToInt32(textBoxSalary.Text)).ToList();
             }
                
-            dataGridView1.DataSource = list;
+            dataGridViewSalary.DataSource = list;
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
             CleanFilters();
-           
-
         }
 
-        private void CleanFilters()
+        private void btnCerrar_Click(object sender, EventArgs e)
         {
-            textBoxUserNo.Clear();
-            textBoxNombre.Clear();
-            textBoxApellido.Clear();
-            textBoxAño.Clear();
-            textBoxSalary.Clear();
+            this.Close();
+        }
 
-            comboFull = false;
-            comboBoxDepartment.SelectedIndex = -1;
-            comboBoxPosition.DataSource = dto.Positions;
-            comboBoxPosition.SelectedIndex = -1;
-            comboBoxMonth.DataSource = dto.Months;
-            comboBoxMonth.SelectedIndex = -1;
+        private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            /* Header 0-EmployeeID 1-UserNo 2-Name 3-SurName 4-DepartmentId 5-DepartmentName 6-PositionId 7-PositionName 8-SalaryYear
+             * 9-MonthName 10MonthID 11-SalaryAmount 12-SalaryID 13-OldSalary */
 
-            comboFull = true;
+            salaryUddate.EmployeeId = Convert.ToInt32(dataGridViewSalary.Rows[e.RowIndex].Cells[0].Value.ToString());
+            salaryUddate.UserNo =Convert.ToInt32( dataGridViewSalary.Rows[e.RowIndex].Cells[1].Value.ToString());
+            salaryUddate.Name = dataGridViewSalary.Rows[e.RowIndex].Cells[2].Value.ToString();
+            salaryUddate.Surname = dataGridViewSalary.Rows[e.RowIndex].Cells[3].Value.ToString();
+                                  
+            salaryUddate.SalaryYear = Convert.ToInt32(dataGridViewSalary.Rows[e.RowIndex].Cells[8].Value.ToString());
 
-            rbMore.Checked = false;
-            rbEqual.Checked = false;
-            rbLess.Checked = false;
-                   
-            dataGridView1.DataSource = dto.Salaries;
+            salaryUddate.MonthID = Convert.ToInt32(dataGridViewSalary.Rows[e.RowIndex].Cells[10].Value.ToString());
+            salaryUddate.SalaryAmount = Convert.ToInt32(dataGridViewSalary.Rows[e.RowIndex].Cells[11].Value.ToString());
+            salaryUddate.SalaryID = Convert.ToInt32(dataGridViewSalary.Rows[e.RowIndex].Cells[12].Value.ToString());
+            salaryUddate.OldSalary = Convert.ToInt32(dataGridViewSalary.Rows[e.RowIndex].Cells[13].Value.ToString());
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            if(salaryUddate.SalaryID == 0)
+            {
+                MessageBox.Show("Selecciona un sueldo antiguo para actualizarlo");
+            }
+            else
+            {
+                FrmSalary frm = new FrmSalary();
+                frm.isUpdate = true;
+                frm.detailUddate = salaryUddate;
+                this.Hide();
+                frm.ShowDialog();
+                this.Visible = true;
+
+                fillAllData();
+                CleanFilters();
+
+            }
         }
     }
 }
