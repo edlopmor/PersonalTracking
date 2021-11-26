@@ -70,7 +70,7 @@ namespace PersonalTracking
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1151, 144);
+            this.panel1.Size = new System.Drawing.Size(1151, 180);
             this.panel1.TabIndex = 0;
             // 
             // btnClear
@@ -177,7 +177,6 @@ namespace PersonalTracking
             this.textBoxUserNo.Name = "textBoxUserNo";
             this.textBoxUserNo.Size = new System.Drawing.Size(158, 30);
             this.textBoxUserNo.TabIndex = 3;
-            this.textBoxUserNo.TextChanged += new System.EventHandler(this.textBoxUserNo_TextChanged);
             this.textBoxUserNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxUserNo_KeyPress);
             // 
             // label1
@@ -186,22 +185,22 @@ namespace PersonalTracking
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(4, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 25);
+            this.label1.Size = new System.Drawing.Size(104, 31);
             this.label1.TabIndex = 2;
-            this.label1.Text = "User ID";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.Text = "User No";
             // 
             // dataGridEmployee
             // 
             this.dataGridEmployee.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridEmployee.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridEmployee.Location = new System.Drawing.Point(0, 144);
+            this.dataGridEmployee.Location = new System.Drawing.Point(0, 180);
             this.dataGridEmployee.Name = "dataGridEmployee";
             this.dataGridEmployee.RowHeadersWidth = 51;
             this.dataGridEmployee.RowTemplate.Height = 24;
-            this.dataGridEmployee.Size = new System.Drawing.Size(1151, 585);
+            this.dataGridEmployee.Size = new System.Drawing.Size(1151, 549);
             this.dataGridEmployee.TabIndex = 1;
+            this.dataGridEmployee.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridEmployee_RowEnter);
             // 
             // panel2
             // 
@@ -210,9 +209,9 @@ namespace PersonalTracking
             this.panel2.Controls.Add(this.btnActualizar);
             this.panel2.Controls.Add(this.btnCrear);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 632);
+            this.panel2.Location = new System.Drawing.Point(0, 608);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1151, 97);
+            this.panel2.Size = new System.Drawing.Size(1151, 121);
             this.panel2.TabIndex = 2;
             // 
             // btnCerrar
@@ -245,6 +244,7 @@ namespace PersonalTracking
             this.btnActualizar.TabIndex = 9;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnCrear
             // 

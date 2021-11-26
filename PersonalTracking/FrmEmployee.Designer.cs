@@ -72,7 +72,7 @@ namespace PersonalTracking
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1151, 75);
+            this.panel1.Size = new System.Drawing.Size(1007, 75);
             this.panel1.TabIndex = 0;
             // 
             // checkBoxIsAdmin
@@ -118,7 +118,7 @@ namespace PersonalTracking
             // textBoxUserNo
             // 
             this.textBoxUserNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxUserNo.Location = new System.Drawing.Point(89, 14);
+            this.textBoxUserNo.Location = new System.Drawing.Point(95, 9);
             this.textBoxUserNo.Name = "textBoxUserNo";
             this.textBoxUserNo.Size = new System.Drawing.Size(210, 30);
             this.textBoxUserNo.TabIndex = 3;
@@ -130,9 +130,9 @@ namespace PersonalTracking
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(6, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 25);
+            this.label1.Size = new System.Drawing.Size(83, 25);
             this.label1.TabIndex = 2;
-            this.label1.Text = "User ID";
+            this.label1.Text = "User No";
             // 
             // textBoxNombre
             // 
@@ -283,7 +283,7 @@ namespace PersonalTracking
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(12, 413);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(116, 31);
+            this.label10.Size = new System.Drawing.Size(93, 25);
             this.label10.TabIndex = 23;
             this.label10.Text = "Dirección";
             // 
@@ -293,13 +293,13 @@ namespace PersonalTracking
             this.textBoxDireccion.Location = new System.Drawing.Point(168, 413);
             this.textBoxDireccion.Multiline = true;
             this.textBoxDireccion.Name = "textBoxDireccion";
-            this.textBoxDireccion.Size = new System.Drawing.Size(728, 104);
+            this.textBoxDireccion.Size = new System.Drawing.Size(728, 215);
             this.textBoxDireccion.TabIndex = 24;
             // 
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(693, 551);
+            this.btnExit.Location = new System.Drawing.Point(795, 668);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(203, 49);
             this.btnExit.TabIndex = 26;
@@ -310,7 +310,7 @@ namespace PersonalTracking
             // btnCrear
             // 
             this.btnCrear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCrear.Location = new System.Drawing.Point(168, 551);
+            this.btnCrear.Location = new System.Drawing.Point(12, 668);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(203, 49);
             this.btnCrear.TabIndex = 25;
@@ -332,7 +332,7 @@ namespace PersonalTracking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1151, 729);
+            this.ClientSize = new System.Drawing.Size(1007, 729);
             this.Controls.Add(this.comboBoxDepartment);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnCrear);
