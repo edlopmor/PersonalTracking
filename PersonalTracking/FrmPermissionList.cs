@@ -108,6 +108,7 @@ namespace PersonalTracking
             detailDto.UserNo = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[1].Value);
             detailDto.StatePermission = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[13].Value);
             detailDto.PermissionAmount = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[10].Value);
+            detailDto.StatePermission = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[12].Value);
 
             
         }
@@ -224,6 +225,27 @@ namespace PersonalTracking
             MessageBox.Show("Permiso denegado");
             fillAllData();
             cleanFilters();
+        }
+
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("Esta seguro de borrar este permiso", "Warning", MessageBoxButtons.YesNo);
+            if (resultado == DialogResult.Yes)
+            {
+                if(detailDto.StatePermission == PermisionStates.Approved || detailDto.StatePermission == PermisionStates.Disaproved)
+                {
+                    MessageBox.Show("No puedes borrar permisos que esten aprobados o denegados");
+                }
+                else
+                {
+                    PermissionBLL.DeletePermission(detailDto.PermissionID);
+                    MessageBox.Show("Permiso borrado correctamente");
+                    //Recargamos pantalla. 
+                    fillAllData();
+                    cleanFilters();
+                }
+            }
+           
         }
     }
 }

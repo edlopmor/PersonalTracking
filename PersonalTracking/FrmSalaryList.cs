@@ -208,5 +208,17 @@ namespace PersonalTracking
 
             }
         }
+
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Esta seguro de querer borrar ese salario","Warning",MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                SalaryBLL.DeleteSalary(salaryUddate.SalaryID);
+                MessageBox.Show("Salario borrado correctamente");
+                fillAllData();
+                CleanFilters();
+            }
+        }
     }
 }

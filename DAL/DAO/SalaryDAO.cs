@@ -78,6 +78,21 @@ namespace DAL.DAO
             return salaryList;
         }
 
+        public static void DeleteSalary(int salaryID)
+        {
+            try
+            {
+                SALARY borrarUnoSolo = db.SALARY.First(x => x.ID_Salary == salaryID);
+                db.SALARY.DeleteOnSubmit(borrarUnoSolo);
+                db.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public static void UpdateSalary(SALARY salary)
         {
             try

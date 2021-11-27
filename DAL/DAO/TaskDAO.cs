@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+
 
 namespace DAL.DAO
 {
@@ -79,6 +79,21 @@ namespace DAL.DAO
 
             }
             return taskList;
+        }
+
+        public static void DeleteTask(int taskID)
+        {
+            try
+            {
+                TASK borrarUnoSolo = db.TASK.First(x => x.ID_Task == taskID);
+                db.TASK.DeleteOnSubmit(borrarUnoSolo);
+                db.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
 
         public static void UpdateTask(TASK task)

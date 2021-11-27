@@ -194,5 +194,17 @@ namespace PersonalTracking
 
 
         }
+
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("Desea borrar la tarea", "Warning", MessageBoxButtons.YesNo);
+            if (resultado == DialogResult.Yes)
+            {
+                TaskBLL.DeleteTask(updateTask.TaskID);
+                MessageBox.Show("Tarea borrada con exito");
+                FillAlData();
+                cleanFilters();
+            }
+        }
     }
 }

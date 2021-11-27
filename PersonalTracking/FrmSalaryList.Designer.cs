@@ -361,6 +361,7 @@ namespace PersonalTracking
             this.btnBorrar.TabIndex = 10;
             this.btnBorrar.Text = "Borrar";
             this.btnBorrar.UseVisualStyleBackColor = true;
+            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
             // 
             // btnActualizar
             // 
@@ -391,6 +392,7 @@ namespace PersonalTracking
             this.dataGridViewSalary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSalary.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewSalary.Location = new System.Drawing.Point(0, 234);
+            this.dataGridViewSalary.MultiSelect = false;
             this.dataGridViewSalary.Name = "dataGridViewSalary";
             this.dataGridViewSalary.RowHeadersWidth = 51;
             this.dataGridViewSalary.RowTemplate.Height = 24;

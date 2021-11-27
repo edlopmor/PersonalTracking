@@ -353,6 +353,7 @@ namespace PersonalTracking
             this.dataGridViewTareas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewTareas.Location = new System.Drawing.Point(0, 233);
             this.dataGridViewTareas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridViewTareas.MultiSelect = false;
             this.dataGridViewTareas.Name = "dataGridViewTareas";
             this.dataGridViewTareas.RowHeadersWidth = 51;
             this.dataGridViewTareas.RowTemplate.Height = 24;
@@ -408,6 +409,7 @@ namespace PersonalTracking
             this.btnBorrar.TabIndex = 14;
             this.btnBorrar.Text = "Borrar";
             this.btnBorrar.UseVisualStyleBackColor = true;
+            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
             // 
             // btnActualizar
             // 
