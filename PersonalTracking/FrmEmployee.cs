@@ -59,6 +59,15 @@ namespace PersonalTracking
 
             if (isUpdate)
             {
+
+                if (!UserStatic.isAdmin)
+                {
+                    checkBoxIsAdmin.Enabled = false;
+                    textBoxUserNo.Enabled = false;
+                    textBoxSalary.Enabled = false;
+                    comboBoxDepartment.Enabled = false;
+                    comboBoxPosition.Enabled = false;
+                }
                 btnCrear.Text = "Actualizar";
                 textBoxUserNo.Text = employeeUpdate.UserNo.ToString();
                 txtBoxPassword.Text = employeeUpdate.Password;
@@ -124,7 +133,7 @@ namespace PersonalTracking
             {
                 if (!isUpdate)
                 {
-                    if (isUnique = EmployeeBLL.isUnique(Convert.ToInt32(textBoxUserNo.Text)))
+                    if (isUnique != EmployeeBLL.isUnique(Convert.ToInt32(textBoxUserNo.Text)))
                         MessageBox.Show("Ese numero de usuario ya existe");
                     else
                     {

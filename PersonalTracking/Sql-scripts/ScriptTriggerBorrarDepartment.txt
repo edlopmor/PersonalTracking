@@ -1,0 +1,7 @@
+﻿
+CREATE TRIGGER delete_department ON DEPARTMENT after delete as 
+begin 
+declare @id int 
+select @id = ID from DEPARTMENT
+delete from POSITION where Deparment_ID = @id
+END

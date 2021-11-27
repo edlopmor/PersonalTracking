@@ -1,0 +1,7 @@
+﻿CREATE trigger delete_position ON POSITION after delete as 
+begin 
+declare @id int 
+select @id = ID from deleted
+delete from EMPLOYEE where Position_ID = @id
+END
+

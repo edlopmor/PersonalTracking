@@ -212,5 +212,10 @@
   <ItemGroup>
     <Folder Include="Resources\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Sql-scripts\ScriptTriggerBorrarDepartment.txt" />
+    <Content Include="Sql-scripts\ScriptTriggerBorrarEmpleados.txt" />
+    <Content Include="Sql-scripts\ScriptTriggerBorrarPosition.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

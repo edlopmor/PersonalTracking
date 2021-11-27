@@ -172,5 +172,17 @@ namespace PersonalTracking
                 Cleanfilters();
             }
         }
+
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("Desea borrar este empleado ", "Warning", MessageBoxButtons.YesNo);
+            if (resultado == DialogResult.Yes)
+            {
+                EmployeeBLL.DeleteEmployee(employeeUpdate.EmployeeId);
+                MessageBox.Show("Eliminar empleado y sus datos respectivos");
+                FillAllData();
+                Cleanfilters();
+            }
+        }
     }
 }

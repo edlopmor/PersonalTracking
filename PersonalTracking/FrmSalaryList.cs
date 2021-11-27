@@ -26,6 +26,8 @@ namespace PersonalTracking
         void fillAllData()
         {
             dto = SalaryBLL.GetALL();
+            if (!UserStatic.isAdmin)
+                dto.Salaries = dto.Salaries.Where(x => x.EmployeeId == UserStatic.EmployeeID).ToList();
             dataGridViewSalary.DataSource = dto.Salaries;
 
             comboFull = false;
@@ -108,7 +110,12 @@ namespace PersonalTracking
             dataGridViewSalary.Columns[11].HeaderText = "Cantidad";
             dataGridViewSalary.Columns[12].Visible = false;
             dataGridViewSalary.Columns[13].HeaderText = "Cantidad anterior";
-
+            if (!UserStatic.isAdmin)
+            {
+                btnActualizar.Hide();
+                btnBorrar.Hide();
+                panelforAdmin.Hide();
+            }
 
 
         }

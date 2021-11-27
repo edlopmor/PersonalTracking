@@ -66,5 +66,16 @@ namespace PersonalTracking
             updateDepartment.ID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
             updateDepartment.DepartmentName = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
         }
+
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("Desea borrar este puesto", "Warning", MessageBoxButtons.YesNo);
+            if (DialogResult.Yes == resultado)
+            {
+                DepartmentBLL.DeleteDeparment(updateDepartment.ID);
+                MessageBox.Show("Departamento borrado con exito");
+                
+            }
+        }
     }
 }

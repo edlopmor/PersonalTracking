@@ -72,6 +72,36 @@ namespace DAL.DAO
             return employeesList;
         }
 
+        public static void DeleteEmployee(int employeeId)
+        {
+            try
+            {
+                EMPLOYEE borrarUnoSolo = db.EMPLOYEE.First(x => x.ID_Employee == employeeId);
+                db.EMPLOYEE.DeleteOnSubmit(borrarUnoSolo);
+                db.SubmitChanges();
+                //Hay un trigger que realizara las operaciones de borrado de datos , desde la base de datos. 
+
+                ////Borrar tareas asociadas a este empleado
+                //List<TASK> listaTask = db.TASK.Where(x => x.ID_Employee == employeeId).ToList();
+                //db.TASK.DeleteAllOnSubmit(listaTask);
+                //db.SubmitChanges();
+                ////Borrar salarios asociados a este empleado
+                //List<SALARY> listaSalary = db.SALARY.Where(x => x.ID_Employee == employeeId).ToList();
+                //db.SALARY.DeleteAllOnSubmit(listaSalary);
+                //db.SubmitChanges();
+                ////Borramos los permisos asociados a este empleado
+                //List<PERMISSION> listaPermission = db.PERMISSION.Where(x => x.ID_Employee == employeeId).ToList();
+                //db.PERMISSION.DeleteAllOnSubmit(listaPermission);
+                //db.SubmitChanges();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public static void UpdateEmployee(POSITION position)
         {
             try

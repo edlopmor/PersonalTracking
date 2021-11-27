@@ -1,0 +1,13 @@
+﻿
+
+CREATE TRIGGER despuesBorrarEmpleado 
+ON EMPLOYEE 
+AFTER DELETE 
+AS 
+BEGIN 
+DECLARE @id int select @id = ID_Employee from deleted
+
+delete from TASK where ID_Employee = @id
+delete from SALARY where ID_Employee = @id 
+delete from PERMISSION where ID_Employee = @id
+END;

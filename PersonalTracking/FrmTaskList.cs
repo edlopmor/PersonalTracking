@@ -28,6 +28,7 @@ namespace PersonalTracking
         private void FillAlData()
         {
             dto = TaskBLL.GetAll();
+            if (!UserStatic.isAdmin) dto.Tasks = dto.Tasks.Where(x => x.EmployeeId == UserStatic.EmployeeID).ToList();
             dataGridViewTareas.DataSource = dto.Tasks;
 
             comboFull = false;
@@ -77,7 +78,7 @@ namespace PersonalTracking
             //Header 0-EmployeeId 1-UserNo 2-Name 3-SurName 4-DepartmentName 5-PositionName 6-DepartmentId 7-PositionId 8-TaskId
             //9-TaskStateId 10-TituloTarea 11-ContenidoTarea 12-TaskStateName 13-TaskStarDate 14-TasDeliveryDate
             FillAlData();
-
+            
             dataGridViewTareas.Columns[0].Visible = false;
             dataGridViewTareas.Columns[1].HeaderText = "Numero usuario";
             dataGridViewTareas.Columns[2].HeaderText = "Nombre";
@@ -94,7 +95,15 @@ namespace PersonalTracking
             dataGridViewTareas.Columns[12].HeaderText = "Estado tarea";
             dataGridViewTareas.Columns[13].HeaderText = "Fecha inicial";
             dataGridViewTareas.Columns[14].HeaderText = "Fecha final";
-
+            if (!UserStatic.isAdmin)
+            {
+                btnAdd.Enabled = false;
+                btnActualizar.Enabled = false;
+                btnBorrar.Enabled = false;
+                panelForAdmin.Hide();
+                buttonAprove.Text = "Finalizar";
+                
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -105,10 +114,7 @@ namespace PersonalTracking
             cleanFilters();
             this.Close();
         }
-        private void ButtonAprove_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -202,6 +208,33 @@ namespace PersonalTracking
             {
                 TaskBLL.DeleteTask(updateTask.TaskID);
                 MessageBox.Show("Tarea borrada con exito");
+                FillAlData();
+                cleanFilters();
+            }
+        }
+
+        private void buttonAprove_Click_1(object sender, EventArgs e)
+        {
+            if (UserStatic.isAdmin && updateTask.TaskStateID == TaskStates.onEmployee && updateTask.EmployeeId != UserStatic.EmployeeID)
+            {
+                MessageBox.Show("Antes de finalizar la tarea debe pasar por entregada");
+            }
+            else if (UserStatic.isAdmin && updateTask.TaskStateID == TaskStates.Approve)
+            {
+                MessageBox.Show("Esta tarea esta aprobada");
+            }
+            else if (!UserStatic.isAdmin && updateTask.TaskStateID == TaskStates.Delivered)
+            {
+                MessageBox.Show("Tarea ya entregada");
+            }
+            else if (!UserStatic.isAdmin && updateTask.TaskStateID == TaskStates.Approve)
+            {
+                MessageBox.Show("Tarea ya aprobada");
+            }
+            else
+            {
+                TaskBLL.ApproveTask(updateTask.TaskID, UserStatic.isAdmin);
+                MessageBox.Show("Tarea actualizada");
                 FillAlData();
                 cleanFilters();
             }

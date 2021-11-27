@@ -14,7 +14,7 @@ namespace PersonalTracking
 {
     public partial class FrmPositionList : Form
     {
-        PositionDTO positionUpdate = new PositionDTO();
+        PositionDTO positionSeleccionada = new PositionDTO();
         bool isUpdate = false; 
         public FrmPositionList()
         {
@@ -59,17 +59,17 @@ namespace PersonalTracking
 
         private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            positionUpdate.ID = Convert.ToInt32(dataGridViewPositions.Rows[e.RowIndex].Cells[2].Value);
-            positionUpdate.PositionName = dataGridViewPositions.Rows[e.RowIndex].Cells[3].Value.ToString();
-            positionUpdate.Deparment_ID = Convert.ToInt32(dataGridViewPositions.Rows[e.RowIndex].Cells[4].Value);
-            positionUpdate.OldDeparmentId = Convert.ToInt32(dataGridViewPositions.Rows[e.RowIndex].Cells[4].Value);
+            positionSeleccionada.ID = Convert.ToInt32(dataGridViewPositions.Rows[e.RowIndex].Cells[2].Value);
+            positionSeleccionada.PositionName = dataGridViewPositions.Rows[e.RowIndex].Cells[3].Value.ToString();
+            positionSeleccionada.Deparment_ID = Convert.ToInt32(dataGridViewPositions.Rows[e.RowIndex].Cells[4].Value);
+            positionSeleccionada.OldDeparmentId = Convert.ToInt32(dataGridViewPositions.Rows[e.RowIndex].Cells[4].Value);
             
             //Minuto 2.22 Video Actualizar posiciones
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            if(positionUpdate.ID == 0)
+            if(positionSeleccionada.ID == 0)
             {
                 MessageBox.Show("Por favor seleccione un puesto para actualizar");
             }
@@ -77,7 +77,7 @@ namespace PersonalTracking
             {
                 FrmPosition frm = new FrmPosition();
                 frm.isUpdate = true;
-                frm.positionUpdate = positionUpdate;
+                frm.positionUpdate = positionSeleccionada;
 
                 this.Hide();
                 frm.ShowDialog();
@@ -85,6 +85,17 @@ namespace PersonalTracking
                 RellenarGrid();
             }
             
+        }
+
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Esta seguro que de desea borra este puesto", "Warning", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                PositionBLL.DeletePosition(positionSeleccionada.ID);
+                MessageBox.Show("Puesto borrado correctamente");
+                RellenarGrid();           
+            }
         }
     }
 }

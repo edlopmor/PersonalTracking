@@ -24,6 +24,9 @@ namespace PersonalTracking
         void fillAllData()
         {
             dto = PermissionBLL.GetAll();
+            if (!UserStatic.isAdmin)
+                dto.Permissions = dto.Permissions.Where(x => x.EmployeeId == UserStatic.EmployeeID).ToList();
+
             dataGridView1.DataSource = dto.Permissions;
 
             comboFull = false;
@@ -97,6 +100,13 @@ namespace PersonalTracking
             dataGridView1.Columns[14].HeaderText = "Motivo";
             dataGridView1.Columns[15].Visible = false;
 
+            if (!UserStatic.isAdmin)
+            {
+                panelAdmin.Visible = false;
+                buttonAprove.Hide();
+                buttonDisaprove.Hide();
+                btnBorrar.Hide();
+            }
         }
 
         private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -184,10 +194,12 @@ namespace PersonalTracking
              
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            if(detailDto.PermissionID == 0)
+            if (detailDto.PermissionID == 0)
             {
                 MessageBox.Show("Selecciona un permiso para actualizar");
             }
+            else if (detailDto.StateId == PermisionStates.Approved || detailDto.StateId == PermisionStates.Disaproved)
+                MessageBox.Show("No puedes actualizar un permiso aprobado o denegado, crealo de nuevo");
             else
             {
                 FrmPermission frm = new FrmPermission();
